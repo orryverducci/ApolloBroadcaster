@@ -265,13 +265,24 @@ namespace ShockCast
                 {
                     shoutCast.ServerPort = 8000;
                 }
-                shoutCast.Password = Password;
+                shoutCast.Password = Password; // Server password
                 server = shoutCast;
             }
             else if (ServerType == Server.ICECAST)
             {
-                throw new NotImplementedException();
                 ICEcast iceCast = new ICEcast(encoder);
+                iceCast.ServerAddress = Address; // Server address
+                if (Port != 0) // If port has been set, use it
+                {
+                    iceCast.ServerPort = Port;
+                }
+                else // Otherwise use default Icecast port of 8000
+                {
+                    iceCast.ServerPort = 8000;
+                }
+                iceCast.Username = "source"; // Icecast source username
+                iceCast.Password = Password; // Server password
+                iceCast.MountPoint = Mount; // Icecast mount point
                 server = iceCast;
             }
             else if (ServerType == Server.WINMEDIA)
