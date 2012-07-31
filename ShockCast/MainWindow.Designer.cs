@@ -79,9 +79,9 @@
             // startStopButton
             // 
             this.startStopButton.CausesValidation = false;
-            this.startStopButton.Location = new System.Drawing.Point(221, 33);
+            this.startStopButton.Location = new System.Drawing.Point(212, 33);
             this.startStopButton.Name = "startStopButton";
-            this.startStopButton.Size = new System.Drawing.Size(86, 25);
+            this.startStopButton.Size = new System.Drawing.Size(95, 25);
             this.startStopButton.TabIndex = 6;
             this.startStopButton.Text = "Start Stream";
             this.startStopButton.UseVisualStyleBackColor = true;

@@ -19,8 +19,8 @@ namespace ShockCast
         private static int recordingHandle; // Handle of the recording stream
         private static RECORDPROC recordProc = new RECORDPROC(RecordHandler); // Recording Callback;
         private static DSP_PeakLevelMeter peakLevelMeter; // Peak Level Meter
-        private static bool currentlyStreaming = false; // Represents if it is currently streaming
         private static BroadCast broadCast; // The broadcast to the server
+        private static Status currentStatus = Status.NOTSTREAMING; // Current streaming status
         #endregion
 
         #region Properties
@@ -31,6 +31,21 @@ namespace ShockCast
         public static int Port { get; set; }
         public static string Mount { get; set; }
         public static string Password { get; set; }
+        public static Status CurrentStatus
+        {
+            get
+            {
+                return currentStatus;
+            }
+            private set
+            {
+                currentStatus = value;
+                if (StatusChange != null)
+                {
+                    StatusChange(null, new EventArgs());
+                }
+            }
+        }
         #endregion
 
         #region Events
@@ -41,6 +56,7 @@ namespace ShockCast
         }
         public delegate void LevelEventHandler(object sender, LevelEventArgs e);
         public static event LevelEventHandler PeakLevelMeterUpdate;
+        public static event EventHandler StatusChange;
         #endregion
 
         #region Enumerations
@@ -57,6 +73,12 @@ namespace ShockCast
             SHOUTCAST = 0,
             ICECAST = 1,
             WINMEDIA = 2
+        }
+
+        public enum Status
+        {
+            NOTSTREAMING,
+            STREAMING
         }
         #endregion
 
@@ -172,13 +194,13 @@ namespace ShockCast
         /// </summary>
         public static void ToggleStream()
         {
-            if (!currentlyStreaming)
-            {
-                StartStream();
-            }
-            else
+            if (broadCast != null && broadCast.IsConnected) // If streaming, stop
             {
                 StopStream();
+            }
+            else // Else if not streaming, start
+            {
+                StartStream();
             }
         }
 
@@ -270,7 +292,7 @@ namespace ShockCast
             }
             else if (ServerType == Server.ICECAST)
             {
-                ICEcast iceCast = new ICEcast(encoder);
+                ICEcast iceCast = new ICEcast(encoder, false);
                 iceCast.ServerAddress = Address; // Server address
                 if (Port != 0) // If port has been set, use it
                 {
@@ -298,11 +320,11 @@ namespace ShockCast
                 broadCast = new BroadCast(server);
                 broadCast.AutoReconnect = false;
                 broadCast.AutoConnect();
-                currentlyStreaming = true;
+                CurrentStatus = Status.STREAMING;
             }
             catch (Exception ex)
             {
-                currentlyStreaming = false;
+                
             }
         }
 
@@ -311,7 +333,15 @@ namespace ShockCast
         /// </summary>
         private static void StopStream()
         {
-
+            if (broadCast != null && broadCast.IsConnected) // If connected
+            {
+                // Disconnect
+                broadCast.Disconnect();
+                broadCast = null;
+                CurrentStatus = Status.NOTSTREAMING;
+                // Clear memory
+                GC.Collect();
+            }
         }
         #endregion
         #endregion

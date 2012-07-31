@@ -74,8 +74,9 @@ namespace ShockCast
                     Close();
                 }
             }
-            // Add level event handlers
+            // Add event handlers
             Stream.PeakLevelMeterUpdate += new Stream.LevelEventHandler(LevelUpdate);
+            Stream.StatusChange += new EventHandler(StatusChange);
             // Initialise saved encoder settings
             Stream.Codec = (Stream.Encoder)Properties.Settings.Default.Encoder;
             Stream.Bitrate = Properties.Settings.Default.Bitrate;
@@ -209,6 +210,25 @@ namespace ShockCast
                     leftVolumeMeter.Amplitude = (float)e.LeftLevel;
                     rightVolumeMeter.Amplitude = (float)e.RightLevel;
                 });
+            }
+        }
+
+        /// <summary>
+        /// Update status when changed
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        private void StatusChange(object sender, EventArgs e)
+        {
+            if (Stream.CurrentStatus == Stream.Status.NOTSTREAMING)
+            {
+                statusLabel.Text = "Not Streaming";
+                startStopButton.Text = "Start Stream";
+            }
+            else if (Stream.CurrentStatus == Stream.Status.STREAMING)
+            {
+                statusLabel.Text = "Streaming";
+                startStopButton.Text = "Stop Stream";
             }
         }
     }
