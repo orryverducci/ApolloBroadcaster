@@ -292,7 +292,7 @@ namespace ShockCast
             }
             else if (ServerType == Server.ICECAST)
             {
-                ICEcast iceCast = new ICEcast(encoder, false);
+                ICEcast iceCast = new ICEcast(encoder);
                 iceCast.ServerAddress = Address; // Server address
                 if (Port != 0) // If port has been set, use it
                 {
@@ -319,12 +319,30 @@ namespace ShockCast
             {
                 broadCast = new BroadCast(server);
                 broadCast.AutoReconnect = false;
+                broadCast.UpdateTitle("", null);
+                broadCast.Notification += new BroadCastEventHandler(BroadcastNotification);
                 broadCast.AutoConnect();
-                CurrentStatus = Status.STREAMING;
             }
             catch (Exception ex)
             {
                 
+            }
+        }
+
+        /// <summary>
+        /// Handles stream notifications
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void BroadcastNotification(object sender, BroadCastEventArgs e)
+        {
+            if (e.EventType == BroadCastEventType.Connected) // If connected to server
+            {
+                CurrentStatus = Status.STREAMING;
+            }
+            else if (e.EventType == BroadCastEventType.Disconnected)
+            {
+                CurrentStatus = Status.NOTSTREAMING;
             }
         }
 
@@ -338,7 +356,6 @@ namespace ShockCast
                 // Disconnect
                 broadCast.Disconnect();
                 broadCast = null;
-                CurrentStatus = Status.NOTSTREAMING;
                 // Clear memory
                 GC.Collect();
             }
