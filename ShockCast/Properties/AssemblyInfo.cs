@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Shock Radio")]
 [assembly: AssemblyProduct("ShockCast")]
-[assembly: AssemblyCopyright("Copyright © Shock Radio 2012")]
+[assembly: AssemblyCopyright("Copyright © Shock Radio 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

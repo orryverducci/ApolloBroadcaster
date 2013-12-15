@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutWindow));
             this.okButton = new System.Windows.Forms.Button();
             this.backPanel = new System.Windows.Forms.Panel();
-            this.versionLabel = new System.Windows.Forms.Label();
-            this.copyrightLabel = new System.Windows.Forms.Label();
             this.disclaimerLabel = new System.Windows.Forms.Label();
+            this.copyrightLabel = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.backPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,15 +60,14 @@
             this.backPanel.Size = new System.Drawing.Size(384, 271);
             this.backPanel.TabIndex = 1;
             // 
-            // versionLabel
+            // disclaimerLabel
             // 
-            this.versionLabel.AutoSize = true;
-            this.versionLabel.CausesValidation = false;
-            this.versionLabel.Location = new System.Drawing.Point(12, 9);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(42, 13);
-            this.versionLabel.TabIndex = 0;
-            this.versionLabel.Text = "Version";
+            this.disclaimerLabel.CausesValidation = false;
+            this.disclaimerLabel.Location = new System.Drawing.Point(12, 47);
+            this.disclaimerLabel.Name = "disclaimerLabel";
+            this.disclaimerLabel.Size = new System.Drawing.Size(360, 224);
+            this.disclaimerLabel.TabIndex = 2;
+            this.disclaimerLabel.Text = resources.GetString("disclaimerLabel.Text");
             // 
             // copyrightLabel
             // 
@@ -78,16 +77,17 @@
             this.copyrightLabel.Name = "copyrightLabel";
             this.copyrightLabel.Size = new System.Drawing.Size(155, 13);
             this.copyrightLabel.TabIndex = 1;
-            this.copyrightLabel.Text = "Copyright © Shock Radio 2012";
+            this.copyrightLabel.Text = "Copyright © Shock Radio 2014";
             // 
-            // disclaimerLabel
+            // versionLabel
             // 
-            this.disclaimerLabel.CausesValidation = false;
-            this.disclaimerLabel.Location = new System.Drawing.Point(12, 47);
-            this.disclaimerLabel.Name = "disclaimerLabel";
-            this.disclaimerLabel.Size = new System.Drawing.Size(360, 224);
-            this.disclaimerLabel.TabIndex = 2;
-            this.disclaimerLabel.Text = resources.GetString("disclaimerLabel.Text");
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.CausesValidation = false;
+            this.versionLabel.Location = new System.Drawing.Point(12, 9);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(42, 13);
+            this.versionLabel.TabIndex = 0;
+            this.versionLabel.Text = "Version";
             // 
             // AboutWindow
             // 
