@@ -43,14 +43,6 @@ namespace ShockCast
             InsertMenu(sysMenuHandle, 5, MF_BYPOSITION | MF_SEPARATOR, 0, string.Empty);
             InsertMenu(sysMenuHandle, 6, MF_BYPOSITION, IDM_ABOUT, "About ShockCast...");
         }
-
-        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Save settings
-            Properties.Settings.Default.Save();
-            // Dispose BASS
-            Stream.Dispose();
-        }
         #endregion
 
         #region Buttons
