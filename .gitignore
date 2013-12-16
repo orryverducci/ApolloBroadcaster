@@ -1,10 +1,4 @@
 #################
-## BASS
-#################
-
-bass*.dll
-
-#################
 ## Visual Studio
 #################
 
@@ -16,6 +10,8 @@ bass*.dll
 # Build results
 [Dd]ebug/
 [Rr]elease/
+[Ww]in32/
+x64/
 *_i.c
 *_p.c
 *.ilk
