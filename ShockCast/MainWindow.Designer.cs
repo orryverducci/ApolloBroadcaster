@@ -33,6 +33,7 @@
             this.connectButton = new System.Windows.Forms.Button();
             this.inputButton = new System.Windows.Forms.Button();
             this.streamButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel
@@ -44,17 +45,18 @@
             this.flowLayoutPanel.CausesValidation = false;
             this.flowLayoutPanel.Location = new System.Drawing.Point(0, 41);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(384, 170);
-            this.flowLayoutPanel.TabIndex = 0;
+            this.flowLayoutPanel.Size = new System.Drawing.Size(484, 220);
+            this.flowLayoutPanel.TabIndex = 4;
             // 
             // connectButton
             // 
             this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.connectButton.CausesValidation = false;
-            this.connectButton.Location = new System.Drawing.Point(60, 12);
+            this.connectButton.Enabled = false;
+            this.connectButton.Location = new System.Drawing.Point(54, 12);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(100, 23);
-            this.connectButton.TabIndex = 1;
+            this.connectButton.TabIndex = 0;
             this.connectButton.Text = "&Connect";
             this.connectButton.UseVisualStyleBackColor = true;
             // 
@@ -62,7 +64,7 @@
             // 
             this.inputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.inputButton.CausesValidation = false;
-            this.inputButton.Location = new System.Drawing.Point(166, 12);
+            this.inputButton.Location = new System.Drawing.Point(266, 12);
             this.inputButton.Name = "inputButton";
             this.inputButton.Size = new System.Drawing.Size(100, 23);
             this.inputButton.TabIndex = 2;
@@ -73,12 +75,24 @@
             // 
             this.streamButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.streamButton.CausesValidation = false;
-            this.streamButton.Location = new System.Drawing.Point(272, 12);
+            this.streamButton.Location = new System.Drawing.Point(372, 12);
             this.streamButton.Name = "streamButton";
             this.streamButton.Size = new System.Drawing.Size(100, 23);
             this.streamButton.TabIndex = 3;
             this.streamButton.Text = "Add &Stream";
             this.streamButton.UseVisualStyleBackColor = true;
+            // 
+            // removeButton
+            // 
+            this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeButton.CausesValidation = false;
+            this.removeButton.Enabled = false;
+            this.removeButton.Location = new System.Drawing.Point(160, 12);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(100, 23);
+            this.removeButton.TabIndex = 1;
+            this.removeButton.Text = "&Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -86,7 +100,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(384, 211);
+            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.Controls.Add(this.removeButton);
             this.Controls.Add(this.streamButton);
             this.Controls.Add(this.inputButton);
             this.Controls.Add(this.connectButton);
@@ -108,6 +123,7 @@
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.Button inputButton;
         private System.Windows.Forms.Button streamButton;
+        private System.Windows.Forms.Button removeButton;
 
 
     }
