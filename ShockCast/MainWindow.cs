@@ -27,6 +27,8 @@ namespace ShockCast
         public const Int32 IDM_ABOUT = 1000;
         #endregion
 
+        private BroadcastCore broadcastCore;
+
         #region Form Load and Close
         public MainWindow()
         {
@@ -42,6 +44,16 @@ namespace ShockCast
             IntPtr sysMenuHandle = GetSystemMenu(this.Handle, false);
             InsertMenu(sysMenuHandle, 5, MF_BYPOSITION | MF_SEPARATOR, 0, string.Empty);
             InsertMenu(sysMenuHandle, 6, MF_BYPOSITION, IDM_ABOUT, "About ShockCast...");
+            // Create Broadcast Core
+            try
+            {
+                broadcastCore = new BroadcastCore();
+            }
+            catch (PlatformNotSupportedException exception)
+            {
+                MessageBox.Show(exception.Message, "Unable to start ShockCast", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
         }
         #endregion
 

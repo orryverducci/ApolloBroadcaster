@@ -29,25 +29,86 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.connectButton = new System.Windows.Forms.Button();
+            this.inputButton = new System.Windows.Forms.Button();
+            this.streamButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.CausesValidation = false;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 41);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(384, 170);
+            this.flowLayoutPanel.TabIndex = 0;
+            // 
+            // connectButton
+            // 
+            this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.connectButton.CausesValidation = false;
+            this.connectButton.Location = new System.Drawing.Point(60, 12);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(100, 23);
+            this.connectButton.TabIndex = 1;
+            this.connectButton.Text = "&Connect";
+            this.connectButton.UseVisualStyleBackColor = true;
+            // 
+            // inputButton
+            // 
+            this.inputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputButton.CausesValidation = false;
+            this.inputButton.Location = new System.Drawing.Point(166, 12);
+            this.inputButton.Name = "inputButton";
+            this.inputButton.Size = new System.Drawing.Size(100, 23);
+            this.inputButton.TabIndex = 2;
+            this.inputButton.Text = "Add &Input";
+            this.inputButton.UseVisualStyleBackColor = true;
+            // 
+            // streamButton
+            // 
+            this.streamButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.streamButton.CausesValidation = false;
+            this.streamButton.Location = new System.Drawing.Point(272, 12);
+            this.streamButton.Name = "streamButton";
+            this.streamButton.Size = new System.Drawing.Size(100, 23);
+            this.streamButton.TabIndex = 3;
+            this.streamButton.Text = "Add &Stream";
+            this.streamButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(384, 211);
+            this.Controls.Add(this.streamButton);
+            this.Controls.Add(this.inputButton);
+            this.Controls.Add(this.connectButton);
+            this.Controls.Add(this.flowLayoutPanel);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainWindow";
-            this.Text = " ShockCast";
+            this.Text = "ShockCast";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.Button connectButton;
+        private System.Windows.Forms.Button inputButton;
+        private System.Windows.Forms.Button streamButton;
+
 
     }
 }
