@@ -19,5 +19,12 @@ namespace ShockCast
                 throw new PlatformNotSupportedException("This version of Windows is not supported. Windows Vista or newer is required.");
             }
         }
+
+        #region Inputs
+        /// <summary>
+        /// List of the current inputs
+        /// </summary>
+        private List<Input> inputs = new List<Input>();
+        #endregion
     }
 }

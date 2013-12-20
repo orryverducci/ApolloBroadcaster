@@ -64,6 +64,7 @@
       <DependentUpon>AboutWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="BroadcastCore.cs" />
+    <Compile Include="Device.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
