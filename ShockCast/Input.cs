@@ -14,6 +14,16 @@ namespace ShockCast
     class Input
     {
         /// <summary>
+        /// Create an input
+        /// </summary>
+        /// <param name="ID">The ID of the input to be created</param>
+        public Input(string ID)
+        {
+
+        }
+
+        #region Static Methods
+        /// <summary>
         /// Returns a list of all the currently available devices
         /// </summary>
         public static List<Device> GetDevices()
@@ -31,5 +41,6 @@ namespace ShockCast
             // Return the list
             return devices;
         }
+        #endregion
     }
 }

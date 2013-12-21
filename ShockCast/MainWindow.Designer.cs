@@ -53,6 +53,7 @@
             this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.connectButton.CausesValidation = false;
             this.connectButton.Enabled = false;
+            this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.connectButton.Location = new System.Drawing.Point(54, 12);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(100, 23);
@@ -64,17 +65,20 @@
             // 
             this.inputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.inputButton.CausesValidation = false;
+            this.inputButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.inputButton.Location = new System.Drawing.Point(266, 12);
             this.inputButton.Name = "inputButton";
             this.inputButton.Size = new System.Drawing.Size(100, 23);
             this.inputButton.TabIndex = 2;
             this.inputButton.Text = "Add &Input";
             this.inputButton.UseVisualStyleBackColor = true;
+            this.inputButton.Click += new System.EventHandler(this.inputButton_Click);
             // 
             // streamButton
             // 
             this.streamButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.streamButton.CausesValidation = false;
+            this.streamButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.streamButton.Location = new System.Drawing.Point(372, 12);
             this.streamButton.Name = "streamButton";
             this.streamButton.Size = new System.Drawing.Size(100, 23);
@@ -87,6 +91,7 @@
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.removeButton.CausesValidation = false;
             this.removeButton.Enabled = false;
+            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.removeButton.Location = new System.Drawing.Point(160, 12);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(100, 23);

@@ -11,6 +11,13 @@ namespace ShockCast
     /// </summary>
     class BroadcastCore
     {
+        #region Events
+        /// <summary>
+        /// Event fired when inputs or streams change
+        /// </summary>
+        public event EventHandler StreamsChanged;
+        #endregion
+
         public BroadcastCore()
         {
             // Check it is running on Windows Vista or newer, throwing an exception if not
@@ -25,6 +32,23 @@ namespace ShockCast
         /// List of the current inputs
         /// </summary>
         private List<Input> inputs = new List<Input>();
+
+        /// <summary>
+        /// Add an input
+        /// </summary>
+        /// <param name="ID">ID of the input to be added</param>
+        public void AddInput(string ID)
+        {
+            // Create input
+            Input input = new Input(ID);
+            // Add input to current inputs
+            inputs.Add(input);
+            // Fire streams changed event
+            if (StreamsChanged != null)
+            {
+                StreamsChanged(this, new EventArgs());
+            }
+        }
         #endregion
     }
 }

@@ -9,7 +9,7 @@ namespace ShockCast
     /// <summary>
     /// An audio device
     /// </summary>
-    class Device
+    public class Device
     {
         /// <summary>
         /// Device name

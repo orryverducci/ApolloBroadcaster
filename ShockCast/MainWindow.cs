@@ -80,6 +80,22 @@ namespace ShockCast
             // Run base function
             base.WndProc(ref m);
         }
+
+        /// <summary>
+        /// Add input button click handler
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        private void inputButton_Click(object sender, EventArgs e)
+        {
+            // Create form
+            AddInputWindow addInputWindow = new AddInputWindow();
+            // Show dialog, and add input if the OK button is clicked
+            if (addInputWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                broadcastCore.AddInput(addInputWindow.SelectedDevice.ID);
+            }
+        }
         #endregion
     }
 }
