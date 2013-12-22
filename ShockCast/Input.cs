@@ -11,7 +11,7 @@ namespace ShockCast
     /// <summary>
     /// Audio input
     /// </summary>
-    class Input
+    public class Input
     {
         /// <summary>
         /// Create an input

@@ -72,6 +72,12 @@
     <Compile Include="BroadcastCore.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="Input.cs" />
+    <Compile Include="InputHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputHeader.Designer.cs">
+      <DependentUpon>InputHeader.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddInputWindow.resx">
       <DependentUpon>AddInputWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputHeader.resx">
+      <DependentUpon>InputHeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

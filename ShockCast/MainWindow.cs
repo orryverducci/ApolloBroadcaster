@@ -54,8 +54,9 @@ namespace ShockCast
                 MessageBox.Show(exception.Message, "Unable to start ShockCast", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
+            // Handle streams changing event
+            broadcastCore.StreamsChanged += broadcastCore_StreamsChanged;
         }
-        #endregion
 
         #region Buttons
         /// <summary>
@@ -94,6 +95,29 @@ namespace ShockCast
             if (addInputWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 broadcastCore.AddInput(addInputWindow.SelectedDevice.ID);
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// Event handler for streams changing
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        void broadcastCore_StreamsChanged(object sender, EventArgs e)
+        {
+            // Clear all controls in flow layout
+            flowLayoutPanel.Controls.Clear();
+            // Add UI elements for each input
+            foreach (Input input in broadcastCore.Inputs)
+            {
+                // Create input header
+                InputHeader header = new InputHeader(input);
+                // Set input header UI size and position parameters
+                header.Width = flowLayoutPanel.Width;
+                header.Margin = new System.Windows.Forms.Padding(0);
+                // Add to flow layout
+                flowLayoutPanel.Controls.Add(header);
             }
         }
         #endregion

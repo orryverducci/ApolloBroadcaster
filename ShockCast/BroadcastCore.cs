@@ -34,6 +34,17 @@ namespace ShockCast
         private List<Input> inputs = new List<Input>();
 
         /// <summary>
+        /// List of the current inputs
+        /// </summary>
+        public List<Input> Inputs
+        {
+            get
+            {
+                return inputs;
+            }
+        }
+
+        /// <summary>
         /// Add an input
         /// </summary>
         /// <param name="ID">ID of the input to be added</param>
