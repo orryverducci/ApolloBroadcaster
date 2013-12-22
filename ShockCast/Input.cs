@@ -5,22 +5,44 @@ using System.Text;
 using System.Threading.Tasks;
 using NAudio;
 using NAudio.CoreAudioApi;
+using NAudio.Wave;
 
 namespace ShockCast
 {
     /// <summary>
     /// Audio input
     /// </summary>
-    public class Input
+    public class Input : IDisposable
     {
+        private MMDevice device;
+        private IWaveIn waveIn;
+
+        #region Constructor and Destructor
         /// <summary>
         /// Create an input
         /// </summary>
         /// <param name="ID">The ID of the input to be created</param>
         public Input(string ID)
         {
-
+            // Get Device from specified ID
+            MMDeviceEnumerator devices = new MMDeviceEnumerator();
+            device = devices.GetDevice(ID);
+            // Set wave in to WASAPI capture of the specified device
+            waveIn = new WasapiCapture(device);
+            // Start recording
+            waveIn.StartRecording();
         }
+
+        /// <summary>
+        /// Stop inputs and clean up
+        /// </summary>
+        public void Dispose()
+        {
+            // Stop recording
+            waveIn.StopRecording();
+            waveIn.Dispose();
+        }
+        #endregion
 
         #region Static Methods
         /// <summary>

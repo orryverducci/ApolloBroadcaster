@@ -29,24 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.flowLayoutPanel = new DBFlowLayoutPanel();
             this.connectButton = new System.Windows.Forms.Button();
             this.inputButton = new System.Windows.Forms.Button();
             this.streamButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel = new ShockCast.DBFlowLayoutPanel();
             this.SuspendLayout();
-            // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.CausesValidation = false;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 41);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(484, 220);
-            this.flowLayoutPanel.TabIndex = 4;
             // 
             // connectButton
             // 
@@ -99,6 +87,18 @@
             this.removeButton.Text = "&Remove";
             this.removeButton.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.CausesValidation = false;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 41);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(484, 220);
+            this.flowLayoutPanel.TabIndex = 4;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -117,6 +117,7 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "ShockCast";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 

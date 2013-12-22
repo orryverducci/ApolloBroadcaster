@@ -38,6 +38,12 @@ namespace ShockCast
             InitializeComponent();
         }
 
+        #region Form Load and Close
+        /// <summary>
+        /// Event handler for form load, setting up UI and broadcast core
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
         private void MainWindow_Load(object sender, EventArgs e)
         {
             // Add 'About' to System Menu
@@ -57,6 +63,17 @@ namespace ShockCast
             // Handle streams changing event
             broadcastCore.StreamsChanged += broadcastCore_StreamsChanged;
         }
+
+        /// <summary>
+        /// Event handler for form close, cleaning up the broadcast core
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            broadcastCore.Dispose();
+        }
+        #endregion
 
         #region Buttons
         /// <summary>

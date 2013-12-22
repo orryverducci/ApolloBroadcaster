@@ -9,7 +9,7 @@ namespace ShockCast
     /// <summary>
     /// The Broadcast Core, which handles inputs and streams
     /// </summary>
-    class BroadcastCore
+    class BroadcastCore : IDisposable
     {
         #region Events
         /// <summary>
@@ -24,6 +24,17 @@ namespace ShockCast
             if (Environment.OSVersion.Version.Major < 6)
             {
                 throw new PlatformNotSupportedException("This version of Windows is not supported. Windows Vista or newer is required.");
+            }
+        }
+
+        /// <summary>
+        /// Clean up inputs
+        /// </summary>
+        public void Dispose()
+        {
+            foreach (Input input in inputs)
+            {
+                input.Dispose();
             }
         }
 
