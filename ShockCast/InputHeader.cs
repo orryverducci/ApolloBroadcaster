@@ -24,6 +24,8 @@ namespace ShockCast
             input = inputDevice;
             // Create components
             InitializeComponent();
+            // Set title
+            titleLabel.Text = input.Name;
         }
     }
 }

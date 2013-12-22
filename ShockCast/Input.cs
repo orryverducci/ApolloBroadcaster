@@ -44,6 +44,16 @@ namespace ShockCast
         }
         #endregion
 
+        #region Information Properties
+        public string Name
+        {
+            get
+            {
+                return device.FriendlyName;
+            }
+        }
+        #endregion
+
         #region Static Methods
         /// <summary>
         /// Returns a list of all the currently available devices
