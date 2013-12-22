@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel = new DBFlowLayoutPanel();
             this.connectButton = new System.Windows.Forms.Button();
             this.inputButton = new System.Windows.Forms.Button();
             this.streamButton = new System.Windows.Forms.Button();
@@ -124,7 +124,7 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private DBFlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.Button inputButton;
         private System.Windows.Forms.Button streamButton;

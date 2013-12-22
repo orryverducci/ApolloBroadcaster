@@ -70,6 +70,9 @@
       <DependentUpon>AddInputWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="BroadcastCore.cs" />
+    <Compile Include="DBFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Device.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="InputHeader.cs">
