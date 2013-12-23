@@ -16,13 +16,36 @@ namespace ShockCast
     /// </summary>
     public class Input : IDisposable
     {
+        #region Private Fields
+        /// <summary>
+        /// The input device
+        /// </summary>
         private MMDevice device;
+        /// <summary>
+        /// The input capture
+        /// </summary>
         private IWaveIn waveIn;
+        /// <summary>
+        /// Buffered wave provider for the input
+        /// </summary>
         private BufferedWaveProvider bufferedWaveProvider;
+        /// <summary>
+        /// The sample providing channel for the input
+        /// </summary>
         private SampleChannel sampleChannel;
+        /// <summary>
+        /// The number of bytes in a sample
+        /// </summary>
         private int sampleByteSize;
+        /// <summary>
+        /// The audio level
+        /// </summary>
         private float meterLevel;
+        #endregion
 
+        /// <summary>
+        /// Event fired when the meter level changes
+        /// </summary>
         public event EventHandler MeterLevelChanged;
 
         #region Constructor and Destructor
@@ -64,6 +87,9 @@ namespace ShockCast
         #endregion
 
         #region Information Properties
+        /// <summary>
+        /// Name of the input device
+        /// </summary>
         public string Name
         {
             get
@@ -85,16 +111,29 @@ namespace ShockCast
         #endregion
 
         #region Recording Functions
+        /// <summary>
+        /// Event handler to retrieve audio data from input device
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
         private void waveIn_DataAvailable(object sender, WaveInEventArgs e)
         {
+            // Send the data to the buffered wave provider
             bufferedWaveProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
             var tempBuffer = new float[e.BytesRecorded / sampleByteSize];
             sampleChannel.Read(tempBuffer, 0, e.BytesRecorded / sampleByteSize);
         }
 
+        /// <summary>
+        /// Event handler to update volume meter
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
         void sampleProvider_StreamVolume(object sender, StreamVolumeEventArgs e)
         {
+            // Convert signal level to decibels and update level with result
             meterLevel = (float)(20 * Math.Log10(e.MaxSampleValues[0]));
+            // Fire event indicating the level has changed
             if (MeterLevelChanged != null)
             {
                 MeterLevelChanged(this, new EventArgs());
