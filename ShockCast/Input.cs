@@ -21,6 +21,7 @@ namespace ShockCast
         private BufferedWaveProvider bufferedWaveProvider;
         private SampleChannel sampleChannel;
         private MeteringSampleProvider sampleProvider;
+        private int sampleByteSize;
         private float meterLevel;
 
         public event EventHandler MeterLevelChanged;
@@ -37,11 +38,8 @@ namespace ShockCast
             device = devices.GetDevice(ID);
             // Set wave in to WASAPI capture of the specified device
             waveIn = new WasapiCapture(device);
-            // Check bit depth is 32-bit, throw an exception if it isn't
-            if (waveIn.WaveFormat.BitsPerSample != 32)
-            {
-                throw new ArgumentException("Input must have a bit depth of 32-bit.");
-            }
+            // Set the number of bytes used by each sample
+            sampleByteSize = waveIn.WaveFormat.BitsPerSample / 8;
             // Add event handler to retrieve samples from the device
             waveIn.DataAvailable += waveIn_DataAvailable;
             // Create buffered wave provider
@@ -92,8 +90,8 @@ namespace ShockCast
         private void waveIn_DataAvailable(object sender, WaveInEventArgs e)
         {
             bufferedWaveProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
-            var tempBuffer = new float[e.BytesRecorded];
-            sampleProvider.Read(tempBuffer, 0, e.BytesRecorded);
+            var tempBuffer = new float[e.BytesRecorded / sampleByteSize];
+            sampleProvider.Read(tempBuffer, 0, e.BytesRecorded / sampleByteSize);
         }
 
         void sampleProvider_StreamVolume(object sender, StreamVolumeEventArgs e)
