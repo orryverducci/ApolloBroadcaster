@@ -26,6 +26,13 @@ namespace ShockCast
             InitializeComponent();
             // Set title
             titleLabel.Text = input.Name;
+            // Handle amplitude change events on input to update meter
+            input.MeterLevelChanged += input_MeterLevelChanged;
+        }
+
+        void input_MeterLevelChanged(object sender, EventArgs e)
+        {
+            volumeMeter.Amplitude = input.MeterLevel;
         }
     }
 }

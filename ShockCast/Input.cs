@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using NAudio;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace ShockCast
 {
@@ -16,6 +18,12 @@ namespace ShockCast
     {
         private MMDevice device;
         private IWaveIn waveIn;
+        private BufferedWaveProvider bufferedWaveProvider;
+        private SampleChannel sampleChannel;
+        private MeteringSampleProvider sampleProvider;
+        private float meterLevel;
+
+        public event EventHandler MeterLevelChanged;
 
         #region Constructor and Destructor
         /// <summary>
@@ -29,6 +37,21 @@ namespace ShockCast
             device = devices.GetDevice(ID);
             // Set wave in to WASAPI capture of the specified device
             waveIn = new WasapiCapture(device);
+            // Check bit depth is 32-bit, throw an exception if it isn't
+            if (waveIn.WaveFormat.BitsPerSample != 32)
+            {
+                throw new ArgumentException("Input must have a bit depth of 32-bit.");
+            }
+            // Add event handler to retrieve samples from the device
+            waveIn.DataAvailable += waveIn_DataAvailable;
+            // Create buffered wave provider
+            bufferedWaveProvider = new BufferedWaveProvider(waveIn.WaveFormat);
+            bufferedWaveProvider.DiscardOnBufferOverflow = true;
+            // Create sample channel
+            sampleChannel = new SampleChannel(bufferedWaveProvider);
+            // Create sample provider
+            sampleProvider = new MeteringSampleProvider(sampleChannel);
+            sampleProvider.StreamVolume += sampleProvider_StreamVolume;
             // Start recording
             waveIn.StartRecording();
         }
@@ -50,6 +73,35 @@ namespace ShockCast
             get
             {
                 return device.FriendlyName;
+            }
+        }
+
+        /// <summary>
+        /// The current amplitude of the input in dB
+        /// </summary>
+        public float MeterLevel
+        {
+            get
+            {
+                return meterLevel;
+            }
+        }
+        #endregion
+
+        #region Recording Functions
+        private void waveIn_DataAvailable(object sender, WaveInEventArgs e)
+        {
+            bufferedWaveProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
+            var tempBuffer = new float[e.BytesRecorded];
+            sampleProvider.Read(tempBuffer, 0, e.BytesRecorded);
+        }
+
+        void sampleProvider_StreamVolume(object sender, StreamVolumeEventArgs e)
+        {
+            meterLevel = (float)(20 * Math.Log10(e.MaxSampleValues[0]));
+            if (MeterLevelChanged != null)
+            {
+                MeterLevelChanged(this, new EventArgs());
             }
         }
         #endregion
