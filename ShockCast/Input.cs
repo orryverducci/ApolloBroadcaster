@@ -20,7 +20,6 @@ namespace ShockCast
         private IWaveIn waveIn;
         private BufferedWaveProvider bufferedWaveProvider;
         private SampleChannel sampleChannel;
-        private MeteringSampleProvider sampleProvider;
         private int sampleByteSize;
         private float meterLevel;
 
@@ -48,8 +47,7 @@ namespace ShockCast
             // Create sample channel
             sampleChannel = new SampleChannel(bufferedWaveProvider);
             // Create sample provider
-            sampleProvider = new MeteringSampleProvider(sampleChannel);
-            sampleProvider.StreamVolume += sampleProvider_StreamVolume;
+            sampleChannel.PreVolumeMeter += sampleProvider_StreamVolume;
             // Start recording
             waveIn.StartRecording();
         }
@@ -91,7 +89,7 @@ namespace ShockCast
         {
             bufferedWaveProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
             var tempBuffer = new float[e.BytesRecorded / sampleByteSize];
-            sampleProvider.Read(tempBuffer, 0, e.BytesRecorded / sampleByteSize);
+            sampleChannel.Read(tempBuffer, 0, e.BytesRecorded / sampleByteSize);
         }
 
         void sampleProvider_StreamVolume(object sender, StreamVolumeEventArgs e)
