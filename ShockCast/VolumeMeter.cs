@@ -11,6 +11,7 @@ namespace ShockCast
     public partial class VolumeMeter : Control
     {
         #region Private variables
+        private Pen pen;
         private Brush foregroundBrush; // Brush for bar colour
         private float amplitude; // Amplitude of audio
         #endregion
@@ -77,6 +78,7 @@ namespace ShockCast
         protected override void OnForeColorChanged(EventArgs e)
         {
             foregroundBrush = new SolidBrush(ForeColor);
+            pen = new Pen(foregroundBrush);
             base.OnForeColorChanged(e);
         }
 
@@ -85,7 +87,7 @@ namespace ShockCast
         /// </summary>
         protected override void OnPaint(PaintEventArgs pe)
         {
-            pe.Graphics.DrawRectangle(Pens.Black, 0, 0, this.Width - 1, this.Height - 1);
+            pe.Graphics.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
 
             double db;
             if (Amplitude >= MinDb && Amplitude <= MaxDb)

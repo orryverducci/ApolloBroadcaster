@@ -40,9 +40,9 @@
             this.titleLabel.CausesValidation = false;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI Light", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.White;
-            this.titleLabel.Location = new System.Drawing.Point(4, 3);
+            this.titleLabel.Location = new System.Drawing.Point(4, 2);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(299, 23);
+            this.titleLabel.Size = new System.Drawing.Size(299, 30);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Title";
             // 
@@ -55,6 +55,7 @@
             this.volumeMeter.MaxDb = 0F;
             this.volumeMeter.MinDb = -60F;
             this.volumeMeter.Name = "volumeMeter";
+            this.volumeMeter.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.volumeMeter.Size = new System.Drawing.Size(75, 23);
             this.volumeMeter.TabIndex = 1;
             // 
