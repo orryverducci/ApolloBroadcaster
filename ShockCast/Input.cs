@@ -66,6 +66,11 @@ namespace ShockCast
             device = devices.GetDevice(ID);
             // Set wave in to WASAPI capture of the specified device
             waveIn = new WasapiCapture(device);
+            // Check the input does not have more than 2 channels, thowing an exception if it does
+            if (waveIn.WaveFormat.Channels > 2)
+            {
+                throw new ArgumentException("Inputs with more than 2 channels are not supported.");
+            }
             // Set the number of bytes used by each sample
             sampleByteSize = waveIn.WaveFormat.BitsPerSample / 8;
             // Add event handler to retrieve samples from the device
