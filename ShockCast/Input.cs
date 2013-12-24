@@ -148,6 +148,17 @@ namespace ShockCast
         /// <param name="e">Event arguments</param>
         void sampleProvider_StreamVolume(object sender, StreamVolumeEventArgs e)
         {
+            float peak;
+            // If stereo, set peak to value of the highest channel
+            if (e.MaxSampleValues.Count() > 1)
+            {
+                peak = (e.MaxSampleValues[0] > e.MaxSampleValues[1]) ? e.MaxSampleValues[0] : e.MaxSampleValues[1];
+            }
+            // Else if mono use only channel peak value
+            else
+            {
+                peak = e.MaxSampleValues[0];
+            }
             // Convert signal level to decibels and update level with result
             meterLevel = (float)(20 * Math.Log10(e.MaxSampleValues[0]));
             // Fire event indicating the level has changed
