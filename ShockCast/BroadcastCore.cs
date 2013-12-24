@@ -61,14 +61,25 @@ namespace ShockCast
         /// <param name="ID">ID of the input to be added</param>
         public void AddInput(string ID)
         {
-            // Create input
-            Input input = new Input(ID);
-            // Add input to current inputs
-            inputs.Add(input);
-            // Fire streams changed event
-            if (StreamsChanged != null)
+            // Try to find input ID to be added in existing inputs
+            bool inputExists = inputs.Exists(device => device.ID == ID);
+            // Add input if it doesn't already exist
+            if (!inputExists)
             {
-                StreamsChanged(this, new EventArgs());
+                // Create input
+                Input input = new Input(ID);
+                // Add input to current inputs
+                inputs.Add(input);
+                // Fire streams changed event
+                if (StreamsChanged != null)
+                {
+                    StreamsChanged(this, new EventArgs());
+                }
+            }
+            // Else throw an exception
+            else
+            {
+                throw new ArgumentException("An input has already been created for this device.");
             }
         }
         #endregion

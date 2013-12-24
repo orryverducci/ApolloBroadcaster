@@ -111,7 +111,14 @@ namespace ShockCast
             // Show dialog, and add input if the OK button is clicked
             if (addInputWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                broadcastCore.AddInput(addInputWindow.SelectedDevice.ID);
+                try
+                {
+                    broadcastCore.AddInput(addInputWindow.SelectedDevice.ID);
+                }
+                catch (ArgumentException exception) // If an exception is thown, show an error
+                {
+                    MessageBox.Show(exception.Message, "Unable to Add Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         #endregion

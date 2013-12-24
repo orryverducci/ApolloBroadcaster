@@ -18,6 +18,10 @@ namespace ShockCast
     {
         #region Private Fields
         /// <summary>
+        /// The device ID
+        /// </summary>
+        private string deviceID;
+        /// <summary>
         /// The input device
         /// </summary>
         private MMDevice device;
@@ -55,6 +59,8 @@ namespace ShockCast
         /// <param name="ID">The ID of the input to be created</param>
         public Input(string ID)
         {
+            // Set the device ID
+            deviceID = ID;
             // Get Device from specified ID
             MMDeviceEnumerator devices = new MMDeviceEnumerator();
             device = devices.GetDevice(ID);
@@ -87,6 +93,17 @@ namespace ShockCast
         #endregion
 
         #region Information Properties
+        /// <summary>
+        /// The device ID
+        /// </summary>
+        public string ID
+        {
+            get
+            {
+                return deviceID;
+            }
+        }
+
         /// <summary>
         /// Name of the input device
         /// </summary>
