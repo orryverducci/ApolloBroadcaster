@@ -27,7 +27,10 @@ namespace ShockCast
         public const Int32 IDM_ABOUT = 1000;
         #endregion
 
+        #region Private Fields
         private BroadcastCore broadcastCore;
+        private ISelectableControl selectedControl;
+        #endregion
 
         #region Form Load and Close
         public MainWindow()
@@ -38,7 +41,6 @@ namespace ShockCast
             InitializeComponent();
         }
 
-        #region Form Load and Close
         /// <summary>
         /// Event handler for form load, setting up UI and broadcast core
         /// </summary>
@@ -121,8 +123,19 @@ namespace ShockCast
                 }
             }
         }
+
+        /// <summary>
+        /// Remove button click handler
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            broadcastCore.RemoveInput(selectedControl.Input);
+        }
         #endregion
 
+        #region Event Handlers
         /// <summary>
         /// Event handler for streams changing
         /// </summary>
@@ -130,6 +143,9 @@ namespace ShockCast
         /// <param name="e">Event arguments</param>
         void broadcastCore_StreamsChanged(object sender, EventArgs e)
         {
+            // Set no items to selected
+            removeButton.Enabled = false;
+            selectedControl = null;
             // Clear all controls in flow layout
             flowLayoutPanel.Controls.Clear();
             // Add UI elements for each input
@@ -140,9 +156,30 @@ namespace ShockCast
                 // Set input header UI size and position parameters
                 header.Width = flowLayoutPanel.Width;
                 header.Margin = new System.Windows.Forms.Padding(0);
+                // Set click event handler
+                header.Click += header_Click;
                 // Add to flow layout
                 flowLayoutPanel.Controls.Add(header);
             }
+        }
+
+        /// <summary>
+        /// Event handler to select item when it is clicked
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        void header_Click(object sender, EventArgs e)
+        {
+            // Mark previous selected control as not selected
+            if (selectedControl != null)
+            {
+                selectedControl.Selected = false;
+            }
+            // Set the currently selected control to the newly selected item
+            selectedControl = (ISelectableControl)sender;
+            selectedControl.Selected = true;
+            // Enable remove button
+            removeButton.Enabled = true;
         }
         #endregion
     }

@@ -82,6 +82,19 @@ namespace ShockCast
                 throw new ArgumentException("An input has already been created for this device.");
             }
         }
+
+        public void RemoveInput(Input input)
+        {
+            // Disposes input
+            input.Dispose();
+            // Remove input
+            inputs.Remove(input);
+            // Fire streams changed event
+            if (StreamsChanged != null)
+            {
+                StreamsChanged(this, new EventArgs());
+            }
+        }
         #endregion
     }
 }

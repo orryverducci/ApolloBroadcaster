@@ -81,6 +81,7 @@
     <Compile Include="InputHeader.Designer.cs">
       <DependentUpon>InputHeader.cs</DependentUpon>
     </Compile>
+    <Compile Include="ISelectableControl.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
