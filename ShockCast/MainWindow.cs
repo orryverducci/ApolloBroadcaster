@@ -125,6 +125,22 @@ namespace ShockCast
         }
 
         /// <summary>
+        /// Add stream button click handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void streamButton_Click(object sender, EventArgs e)
+        {
+            // Create form
+            AddStreamWindow streamWindow = new AddStreamWindow(broadcastCore.Inputs);
+            // Show dialog, and add input if the OK button is clicked
+            if (streamWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+            }
+        }
+
+        /// <summary>
         /// Remove button click handler
         /// </summary>
         /// <param name="sender">Sending object</param>

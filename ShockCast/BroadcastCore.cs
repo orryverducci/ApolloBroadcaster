@@ -18,6 +18,7 @@ namespace ShockCast
         public event EventHandler StreamsChanged;
         #endregion
 
+        #region Constructor and Dispose
         public BroadcastCore()
         {
             // Check it is running on Windows Vista or newer, throwing an exception if not
@@ -37,6 +38,7 @@ namespace ShockCast
                 input.Dispose();
             }
         }
+        #endregion
 
         #region Inputs
         /// <summary>
@@ -93,6 +95,24 @@ namespace ShockCast
             if (StreamsChanged != null)
             {
                 StreamsChanged(this, new EventArgs());
+            }
+        }
+        #endregion
+
+        #region Streams
+        /// <summary>
+        /// List of the current streams
+        /// </summary>
+        private List<Stream> streams = new List<Stream>();
+
+        /// <summary>
+        /// List of the current streams
+        /// </summary>
+        public List<Stream> Streams
+        {
+            get
+            {
+                return streams;
             }
         }
         #endregion

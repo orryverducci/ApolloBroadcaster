@@ -73,6 +73,7 @@
             this.streamButton.TabIndex = 3;
             this.streamButton.Text = "Add &Stream";
             this.streamButton.UseVisualStyleBackColor = true;
+            this.streamButton.Click += new System.EventHandler(this.streamButton_Click);
             // 
             // removeButton
             // 
