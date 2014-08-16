@@ -1,4 +1,4 @@
-﻿namespace ShockCast
+﻿namespace ShockCast.UI
 {
     partial class InputHeader
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.titleLabel = new System.Windows.Forms.Label();
-            this.volumeMeter = new ShockCast.VolumeMeter();
+            this.volumeMeter = new ShockCast.UI.VolumeMeter();
             this.SuspendLayout();
             // 
             // titleLabel

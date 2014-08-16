@@ -70,23 +70,23 @@
       <DependentUpon>AddInputWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="BroadcastCore.cs" />
-    <Compile Include="DBFlowLayoutPanel.cs">
+    <Compile Include="UI\DBFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Device.cs" />
     <Compile Include="Encoders\IEncoder.cs" />
     <Compile Include="Encoders\MP3.cs" />
-    <Compile Include="HeaderlessTabs.cs">
+    <Compile Include="UI\HeaderlessTabs.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Input.cs" />
-    <Compile Include="InputHeader.cs">
+    <Compile Include="UI\InputHeader.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InputHeader.Designer.cs">
+    <Compile Include="UI\InputHeader.Designer.cs">
       <DependentUpon>InputHeader.cs</DependentUpon>
     </Compile>
-    <Compile Include="ISelectableControl.cs" />
+    <Compile Include="UI\ISelectableControl.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,10 +109,10 @@
     <Compile Include="AddStreamWindow.Designer.cs">
       <DependentUpon>AddStreamWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="VolumeMeter.cs">
+    <Compile Include="UI\VolumeMeter.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VolumeMeter.designer.cs">
+    <Compile Include="UI\VolumeMeter.designer.cs">
       <DependentUpon>VolumeMeter.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutWindow.resx">
@@ -121,7 +121,7 @@
     <EmbeddedResource Include="AddInputWindow.resx">
       <DependentUpon>AddInputWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputHeader.resx">
+    <EmbeddedResource Include="UI\InputHeader.resx">
       <DependentUpon>InputHeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">

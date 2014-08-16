@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace ShockCast
+namespace ShockCast.UI
 {
     public partial class InputHeader : UserControl, ISelectableControl
     {

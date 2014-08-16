@@ -34,7 +34,7 @@
             this.audioButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.tabControl = new ShockCast.HeaderlessTabs();
+            this.tabControl = new ShockCast.UI.HeaderlessTabs();
             this.audioPage = new System.Windows.Forms.TabPage();
             this.bitrateComboBox = new System.Windows.Forms.ComboBox();
             this.bitrateLabel = new System.Windows.Forms.Label();
@@ -385,7 +385,7 @@
         private System.Windows.Forms.Button serverButton;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
-        private HeaderlessTabs tabControl;
+        private ShockCast.UI.HeaderlessTabs tabControl;
         private System.Windows.Forms.TabPage audioPage;
         private System.Windows.Forms.TabPage serverPage;
         private System.Windows.Forms.Label audioLabel;

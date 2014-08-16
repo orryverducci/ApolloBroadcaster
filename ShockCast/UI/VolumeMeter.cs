@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ShockCast
+namespace ShockCast.UI
 {
     public partial class VolumeMeter : Control
     {

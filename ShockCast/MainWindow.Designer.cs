@@ -33,7 +33,7 @@
             this.inputButton = new System.Windows.Forms.Button();
             this.streamButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel = new ShockCast.DBFlowLayoutPanel();
+            this.flowLayoutPanel = new ShockCast.UI.DBFlowLayoutPanel();
             this.SuspendLayout();
             // 
             // connectButton
@@ -127,7 +127,7 @@
 
         #endregion
 
-        private DBFlowLayoutPanel flowLayoutPanel;
+        private ShockCast.UI.DBFlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.Button inputButton;
         private System.Windows.Forms.Button streamButton;

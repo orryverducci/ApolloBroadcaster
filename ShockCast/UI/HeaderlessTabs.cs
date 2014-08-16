@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ShockCast
+namespace ShockCast.UI
 {
     public class HeaderlessTabs : TabControl
     {

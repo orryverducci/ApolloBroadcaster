@@ -1,4 +1,4 @@
-﻿namespace ShockCast
+﻿namespace ShockCast.UI
 {
     partial class VolumeMeter
     {
