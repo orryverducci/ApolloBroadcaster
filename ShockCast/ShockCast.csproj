@@ -69,17 +69,17 @@
     <Compile Include="AddInputWindow.Designer.cs">
       <DependentUpon>AddInputWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="BroadcastCore.cs" />
+    <Compile Include="Core\BroadcastCore.cs" />
     <Compile Include="UI\DBFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Device.cs" />
-    <Compile Include="Encoders\IEncoder.cs" />
-    <Compile Include="Encoders\MP3.cs" />
+    <Compile Include="Core\Device.cs" />
+    <Compile Include="Core\IEncoder.cs" />
+    <Compile Include="Core\MP3.cs" />
     <Compile Include="UI\HeaderlessTabs.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Input.cs" />
+    <Compile Include="Core\Input.cs" />
     <Compile Include="UI\InputHeader.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,7 +96,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="Stream.cs" />
+    <Compile Include="Core\Stream.cs" />
     <Compile Include="AddStreamWindow.cs">
       <SubType>Form</SubType>
     </Compile>
