@@ -47,10 +47,36 @@ namespace ShockCast
         private float meterLevel;
         #endregion
 
+        #region Events
         /// <summary>
         /// Event fired when the meter level changes
         /// </summary>
         public event EventHandler MeterLevelChanged;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public class AudioEventArgs : EventArgs
+        {
+            private float[] samples;
+
+            public AudioEventArgs(float[] recordedSamples)
+            {
+                samples = recordedSamples;
+            }
+
+            public float[] Samples {
+                get{
+                    return samples;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event fired when audio is recorded
+        /// </summary>
+        public event EventHandler<AudioEventArgs> SamplesRecorded;
+        #endregion
 
         #region Constructor and Destructor
         /// <summary>
@@ -142,8 +168,13 @@ namespace ShockCast
         {
             // Send the data to the buffered wave provider
             bufferedWaveProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
-            var tempBuffer = new float[e.BytesRecorded / sampleByteSize];
-            sampleChannel.Read(tempBuffer, 0, e.BytesRecorded / sampleByteSize);
+            var audioBuffer = new float[e.BytesRecorded / sampleByteSize];
+            // Send the audio to outputs
+            sampleChannel.Read(audioBuffer, 0, e.BytesRecorded / sampleByteSize);
+            if (SamplesRecorded != null)
+            {
+                SamplesRecorded(this, new AudioEventArgs(audioBuffer));
+            }
         }
 
         /// <summary>
