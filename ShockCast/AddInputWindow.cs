@@ -30,6 +30,7 @@ namespace ShockCast
 
         public AddInputWindow()
         {
+            Opacity = 0;
             InitializeComponent();
         }
 
@@ -46,16 +47,16 @@ namespace ShockCast
             deviceComboBox.DataSource = devices;
             deviceComboBox.DisplayMember = "Name";
             // Determine if devices were found
-            if (devices.Count() != 0) // If devices are found
-            {
-                // Set the combo box to the first item
-                deviceComboBox.SelectedIndex = 0;
-            }
-            else // Else if no devices are foun
+            if (devices.Count() == 0) // If no devices are found
             {
                 // Diplay error and exit
                 MessageBox.Show("No input devices are available. Check they are plugged in and not disabled.", "Unable to Add Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
+            }
+            else // Else if devices are found
+            {
+                // Show form
+                Opacity = 100;
             }
         }
     }
