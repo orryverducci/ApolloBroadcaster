@@ -18,28 +18,50 @@ namespace ShockCast
         public AddStreamWindow(List<Input> currentInputs)
         {
             inputs = currentInputs;
+            Opacity = 0;
             InitializeComponent();
         }
 
         private void AddStreamWindow_Load(object sender, EventArgs e)
         {
+            // Set default tab
+            audioButton.Checked = true;
             // Load inputs
             inputComboBox.DataSource = inputs;
             inputComboBox.DisplayMember = "Name";
             // Set initial combo box values
             codecComboBox.SelectedIndex = 0;
             typeComboBox.SelectedIndex = 0;
+            // Determine if inputs have been added
+            if (inputs.Count() == 0) // If no inputs are available
+            {
+                // Diplay error and exit
+                MessageBox.Show("You have not added any inputs. Please add an input and then try adding a stream again.", "Unable to Add Stream", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
+            else // If inputs are available
+            {
+                Opacity = 100;
+            }
         }
 
         #region Tabs
-        private void audioButton_Click(object sender, EventArgs e)
+        private void audioButton_CheckedChanged(object sender, EventArgs e)
         {
-            tabControl.SelectedTab = tabControl.TabPages[0];
+            if (audioButton.Checked)
+            {
+                tabControl.SelectedTab = tabControl.TabPages[0];
+                serverButton.Checked = false;
+            }
         }
 
-        private void serverButton_Click(object sender, EventArgs e)
+        private void serverButton_CheckedChanged(object sender, EventArgs e)
         {
-            tabControl.SelectedTab = tabControl.TabPages[1];
+            if (serverButton.Checked)
+            {
+                tabControl.SelectedTab = tabControl.TabPages[1];
+                audioButton.Checked = false;
+            }
         }
         #endregion
 

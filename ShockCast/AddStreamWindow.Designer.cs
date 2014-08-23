@@ -30,12 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStreamWindow));
             this.tabPanel = new System.Windows.Forms.Panel();
-            this.serverButton = new System.Windows.Forms.Button();
-            this.audioButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.tabControl = new ShockCast.UI.HeaderlessTabs();
             this.audioPage = new System.Windows.Forms.TabPage();
+            this.channelLabel = new System.Windows.Forms.Label();
             this.bitrateComboBox = new System.Windows.Forms.ComboBox();
             this.bitrateLabel = new System.Windows.Forms.Label();
             this.codecComboBox = new System.Windows.Forms.ComboBox();
@@ -53,6 +52,11 @@
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.typeLabel = new System.Windows.Forms.Label();
             this.serverLabel = new System.Windows.Forms.Label();
+            this.serverButton = new ShockCast.UI.MenuButton();
+            this.audioButton = new ShockCast.UI.MenuButton();
+            this.channelTextBox = new System.Windows.Forms.TextBox();
+            this.sampleRateLabel = new System.Windows.Forms.Label();
+            this.sampleRateComboBox = new System.Windows.Forms.ComboBox();
             this.tabPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.audioPage.SuspendLayout();
@@ -71,34 +75,6 @@
             this.tabPanel.Name = "tabPanel";
             this.tabPanel.Size = new System.Drawing.Size(200, 261);
             this.tabPanel.TabIndex = 0;
-            // 
-            // serverButton
-            // 
-            this.serverButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.serverButton.CausesValidation = false;
-            this.serverButton.Location = new System.Drawing.Point(0, 23);
-            this.serverButton.Name = "serverButton";
-            this.serverButton.Size = new System.Drawing.Size(199, 23);
-            this.serverButton.TabIndex = 1;
-            this.serverButton.Text = "&Server Settings";
-            this.serverButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.serverButton.UseVisualStyleBackColor = true;
-            this.serverButton.Click += new System.EventHandler(this.serverButton_Click);
-            // 
-            // audioButton
-            // 
-            this.audioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.audioButton.CausesValidation = false;
-            this.audioButton.Location = new System.Drawing.Point(0, 0);
-            this.audioButton.Name = "audioButton";
-            this.audioButton.Size = new System.Drawing.Size(199, 23);
-            this.audioButton.TabIndex = 0;
-            this.audioButton.Text = "&Audio Settings";
-            this.audioButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.audioButton.UseVisualStyleBackColor = true;
-            this.audioButton.Click += new System.EventHandler(this.audioButton_Click);
             // 
             // okButton
             // 
@@ -143,6 +119,10 @@
             // 
             this.audioPage.BackColor = System.Drawing.Color.White;
             this.audioPage.CausesValidation = false;
+            this.audioPage.Controls.Add(this.sampleRateComboBox);
+            this.audioPage.Controls.Add(this.sampleRateLabel);
+            this.audioPage.Controls.Add(this.channelTextBox);
+            this.audioPage.Controls.Add(this.channelLabel);
             this.audioPage.Controls.Add(this.bitrateComboBox);
             this.audioPage.Controls.Add(this.bitrateLabel);
             this.audioPage.Controls.Add(this.codecComboBox);
@@ -157,6 +137,15 @@
             this.audioPage.TabIndex = 0;
             this.audioPage.Text = "Audio Settings";
             // 
+            // channelLabel
+            // 
+            this.channelLabel.AutoSize = true;
+            this.channelLabel.Location = new System.Drawing.Point(210, 113);
+            this.channelLabel.Name = "channelLabel";
+            this.channelLabel.Size = new System.Drawing.Size(56, 15);
+            this.channelLabel.TabIndex = 7;
+            this.channelLabel.Text = "Channels";
+            // 
             // bitrateComboBox
             // 
             this.bitrateComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -165,7 +154,7 @@
             this.bitrateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bitrateComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.bitrateComboBox.FormattingEnabled = true;
-            this.bitrateComboBox.Location = new System.Drawing.Point(55, 110);
+            this.bitrateComboBox.Location = new System.Drawing.Point(86, 110);
             this.bitrateComboBox.Name = "bitrateComboBox";
             this.bitrateComboBox.Size = new System.Drawing.Size(100, 23);
             this.bitrateComboBox.TabIndex = 6;
@@ -186,9 +175,9 @@
             this.codecComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.codecComboBox.Items.AddRange(new object[] {
             "MP3"});
-            this.codecComboBox.Location = new System.Drawing.Point(55, 81);
+            this.codecComboBox.Location = new System.Drawing.Point(86, 81);
             this.codecComboBox.Name = "codecComboBox";
-            this.codecComboBox.Size = new System.Drawing.Size(317, 23);
+            this.codecComboBox.Size = new System.Drawing.Size(286, 23);
             this.codecComboBox.TabIndex = 4;
             this.codecComboBox.SelectedIndexChanged += new System.EventHandler(this.codecComboBox_SelectedIndexChanged);
             // 
@@ -209,9 +198,9 @@
             this.inputComboBox.CausesValidation = false;
             this.inputComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inputComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.inputComboBox.Location = new System.Drawing.Point(55, 52);
+            this.inputComboBox.Location = new System.Drawing.Point(86, 52);
             this.inputComboBox.Name = "inputComboBox";
-            this.inputComboBox.Size = new System.Drawing.Size(317, 23);
+            this.inputComboBox.Size = new System.Drawing.Size(286, 23);
             this.inputComboBox.TabIndex = 2;
             // 
             // inputLabel
@@ -317,7 +306,6 @@
             this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.typeComboBox.Items.AddRange(new object[] {
-            "Shoutcast",
             "Icecast"});
             this.typeComboBox.Location = new System.Drawing.Point(57, 52);
             this.typeComboBox.Name = "typeComboBox";
@@ -344,6 +332,74 @@
             this.serverLabel.Size = new System.Drawing.Size(149, 30);
             this.serverLabel.TabIndex = 0;
             this.serverLabel.Text = "Server settings";
+            // 
+            // serverButton
+            // 
+            this.serverButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.serverButton.BackColor = System.Drawing.Color.Transparent;
+            this.serverButton.CausesValidation = false;
+            this.serverButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.serverButton.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverButton.Location = new System.Drawing.Point(0, 32);
+            this.serverButton.Name = "serverButton";
+            this.serverButton.Size = new System.Drawing.Size(200, 32);
+            this.serverButton.TabIndex = 1;
+            this.serverButton.Text = "&Server Settings";
+            this.serverButton.UseVisualStyleBackColor = true;
+            this.serverButton.CheckedChanged += new System.EventHandler(this.serverButton_CheckedChanged);
+            // 
+            // audioButton
+            // 
+            this.audioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.audioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.audioButton.BackColor = System.Drawing.Color.Transparent;
+            this.audioButton.CausesValidation = false;
+            this.audioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.audioButton.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.audioButton.Location = new System.Drawing.Point(0, 0);
+            this.audioButton.Name = "audioButton";
+            this.audioButton.Size = new System.Drawing.Size(200, 32);
+            this.audioButton.TabIndex = 0;
+            this.audioButton.Text = "&Audio Settings";
+            this.audioButton.UseVisualStyleBackColor = false;
+            this.audioButton.CheckedChanged += new System.EventHandler(this.audioButton_CheckedChanged);
+            // 
+            // channelTextBox
+            // 
+            this.channelTextBox.Location = new System.Drawing.Point(272, 110);
+            this.channelTextBox.Name = "channelTextBox";
+            this.channelTextBox.Size = new System.Drawing.Size(100, 23);
+            this.channelTextBox.TabIndex = 8;
+            // 
+            // sampleRateLabel
+            // 
+            this.sampleRateLabel.AutoSize = true;
+            this.sampleRateLabel.Location = new System.Drawing.Point(8, 142);
+            this.sampleRateLabel.Name = "sampleRateLabel";
+            this.sampleRateLabel.Size = new System.Drawing.Size(72, 15);
+            this.sampleRateLabel.TabIndex = 9;
+            this.sampleRateLabel.Text = "Sample Rate";
+            // 
+            // sampleRateComboBox
+            // 
+            this.sampleRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sampleRateComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.sampleRateComboBox.FormattingEnabled = true;
+            this.sampleRateComboBox.Items.AddRange(new object[] {
+            "8 kHz",
+            "16 kHz",
+            "32 kHz",
+            "44.1 kHz",
+            "48 kHz",
+            "96 kHz",
+            "192 kHz"});
+            this.sampleRateComboBox.Location = new System.Drawing.Point(86, 139);
+            this.sampleRateComboBox.Name = "sampleRateComboBox";
+            this.sampleRateComboBox.Size = new System.Drawing.Size(100, 23);
+            this.sampleRateComboBox.TabIndex = 10;
             // 
             // AddStreamWindow
             // 
@@ -381,28 +437,32 @@
         #endregion
 
         private System.Windows.Forms.Panel tabPanel;
-        private System.Windows.Forms.Button audioButton;
-        private System.Windows.Forms.Button serverButton;
+        private ShockCast.UI.MenuButton audioButton;
+        private ShockCast.UI.MenuButton serverButton;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private ShockCast.UI.HeaderlessTabs tabControl;
         private System.Windows.Forms.TabPage audioPage;
         private System.Windows.Forms.TabPage serverPage;
         private System.Windows.Forms.Label audioLabel;
-        private System.Windows.Forms.ComboBox inputComboBox;
         private System.Windows.Forms.Label inputLabel;
         private System.Windows.Forms.Label codecLabel;
-        private System.Windows.Forms.ComboBox codecComboBox;
-        private System.Windows.Forms.ComboBox bitrateComboBox;
         private System.Windows.Forms.Label bitrateLabel;
         private System.Windows.Forms.Label serverLabel;
-        private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Label typeLabel;
-        private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.Label urlLabel;
-        private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.Label portLabel;
-        private System.Windows.Forms.TextBox mountTextBox;
         private System.Windows.Forms.Label mountLabel;
+        public System.Windows.Forms.ComboBox inputComboBox;
+        public System.Windows.Forms.ComboBox codecComboBox;
+        public System.Windows.Forms.ComboBox bitrateComboBox;
+        public System.Windows.Forms.ComboBox typeComboBox;
+        public System.Windows.Forms.TextBox urlTextBox;
+        public System.Windows.Forms.TextBox portTextBox;
+        public System.Windows.Forms.TextBox mountTextBox;
+        private System.Windows.Forms.Label channelLabel;
+        private System.Windows.Forms.ComboBox sampleRateComboBox;
+        private System.Windows.Forms.Label sampleRateLabel;
+        private System.Windows.Forms.TextBox channelTextBox;
     }
 }
