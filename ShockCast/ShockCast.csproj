@@ -103,6 +103,9 @@
     <Compile Include="AddStreamWindow.Designer.cs">
       <DependentUpon>AddStreamWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MenuButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\VolumeMeter.cs">
       <SubType>Component</SubType>
     </Compile>
