@@ -34,6 +34,9 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.tabControl = new ShockCast.UI.HeaderlessTabs();
             this.audioPage = new System.Windows.Forms.TabPage();
+            this.sampleRateComboBox = new System.Windows.Forms.ComboBox();
+            this.sampleRateLabel = new System.Windows.Forms.Label();
+            this.channelTextBox = new System.Windows.Forms.TextBox();
             this.channelLabel = new System.Windows.Forms.Label();
             this.bitrateComboBox = new System.Windows.Forms.ComboBox();
             this.bitrateLabel = new System.Windows.Forms.Label();
@@ -43,6 +46,8 @@
             this.inputLabel = new System.Windows.Forms.Label();
             this.audioLabel = new System.Windows.Forms.Label();
             this.serverPage = new System.Windows.Forms.TabPage();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
             this.portTextBox = new System.Windows.Forms.TextBox();
             this.portLabel = new System.Windows.Forms.Label();
             this.mountTextBox = new System.Windows.Forms.TextBox();
@@ -54,9 +59,6 @@
             this.serverLabel = new System.Windows.Forms.Label();
             this.serverButton = new ShockCast.UI.MenuButton();
             this.audioButton = new ShockCast.UI.MenuButton();
-            this.channelTextBox = new System.Windows.Forms.TextBox();
-            this.sampleRateLabel = new System.Windows.Forms.Label();
-            this.sampleRateComboBox = new System.Windows.Forms.ComboBox();
             this.tabPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.audioPage.SuspendLayout();
@@ -136,6 +138,40 @@
             this.audioPage.Size = new System.Drawing.Size(384, 220);
             this.audioPage.TabIndex = 0;
             this.audioPage.Text = "Audio Settings";
+            // 
+            // sampleRateComboBox
+            // 
+            this.sampleRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sampleRateComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.sampleRateComboBox.FormattingEnabled = true;
+            this.sampleRateComboBox.Items.AddRange(new object[] {
+            "8 kHz",
+            "16 kHz",
+            "32 kHz",
+            "44.1 kHz",
+            "48 kHz",
+            "96 kHz",
+            "192 kHz"});
+            this.sampleRateComboBox.Location = new System.Drawing.Point(86, 139);
+            this.sampleRateComboBox.Name = "sampleRateComboBox";
+            this.sampleRateComboBox.Size = new System.Drawing.Size(100, 23);
+            this.sampleRateComboBox.TabIndex = 10;
+            // 
+            // sampleRateLabel
+            // 
+            this.sampleRateLabel.AutoSize = true;
+            this.sampleRateLabel.Location = new System.Drawing.Point(8, 142);
+            this.sampleRateLabel.Name = "sampleRateLabel";
+            this.sampleRateLabel.Size = new System.Drawing.Size(72, 15);
+            this.sampleRateLabel.TabIndex = 9;
+            this.sampleRateLabel.Text = "Sample Rate";
+            // 
+            // channelTextBox
+            // 
+            this.channelTextBox.Location = new System.Drawing.Point(272, 110);
+            this.channelTextBox.Name = "channelTextBox";
+            this.channelTextBox.Size = new System.Drawing.Size(100, 23);
+            this.channelTextBox.TabIndex = 8;
             // 
             // channelLabel
             // 
@@ -228,6 +264,8 @@
             // 
             this.serverPage.BackColor = System.Drawing.Color.White;
             this.serverPage.CausesValidation = false;
+            this.serverPage.Controls.Add(this.passwordTextBox);
+            this.serverPage.Controls.Add(this.passwordLabel);
             this.serverPage.Controls.Add(this.portTextBox);
             this.serverPage.Controls.Add(this.portLabel);
             this.serverPage.Controls.Add(this.mountTextBox);
@@ -244,19 +282,37 @@
             this.serverPage.TabIndex = 1;
             this.serverPage.Text = "Server Settings";
             // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(86, 139);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.Size = new System.Drawing.Size(286, 23);
+            this.passwordTextBox.TabIndex = 10;
+            this.passwordTextBox.UseSystemPasswordChar = true;
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(8, 142);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(57, 15);
+            this.passwordLabel.TabIndex = 9;
+            this.passwordLabel.Text = "Password";
+            // 
             // portTextBox
             // 
             this.portTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.portTextBox.Location = new System.Drawing.Point(272, 110);
+            this.portTextBox.Location = new System.Drawing.Point(277, 110);
             this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(100, 23);
+            this.portTextBox.Size = new System.Drawing.Size(95, 23);
             this.portTextBox.TabIndex = 8;
             // 
             // portLabel
             // 
             this.portLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.portLabel.AutoSize = true;
-            this.portLabel.Location = new System.Drawing.Point(237, 113);
+            this.portLabel.Location = new System.Drawing.Point(242, 113);
             this.portLabel.Name = "portLabel";
             this.portLabel.Size = new System.Drawing.Size(29, 15);
             this.portLabel.TabIndex = 7;
@@ -265,7 +321,7 @@
             // mountTextBox
             // 
             this.mountTextBox.CausesValidation = false;
-            this.mountTextBox.Location = new System.Drawing.Point(57, 110);
+            this.mountTextBox.Location = new System.Drawing.Point(86, 110);
             this.mountTextBox.Name = "mountTextBox";
             this.mountTextBox.Size = new System.Drawing.Size(150, 23);
             this.mountTextBox.TabIndex = 6;
@@ -284,9 +340,9 @@
             // 
             this.urlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.urlTextBox.Location = new System.Drawing.Point(57, 81);
+            this.urlTextBox.Location = new System.Drawing.Point(86, 81);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(315, 23);
+            this.urlTextBox.Size = new System.Drawing.Size(286, 23);
             this.urlTextBox.TabIndex = 4;
             // 
             // urlLabel
@@ -307,9 +363,9 @@
             this.typeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.typeComboBox.Items.AddRange(new object[] {
             "Icecast"});
-            this.typeComboBox.Location = new System.Drawing.Point(57, 52);
+            this.typeComboBox.Location = new System.Drawing.Point(86, 52);
             this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(315, 23);
+            this.typeComboBox.Size = new System.Drawing.Size(286, 23);
             this.typeComboBox.TabIndex = 2;
             // 
             // typeLabel
@@ -366,40 +422,6 @@
             this.audioButton.Text = "&Audio Settings";
             this.audioButton.UseVisualStyleBackColor = false;
             this.audioButton.CheckedChanged += new System.EventHandler(this.audioButton_CheckedChanged);
-            // 
-            // channelTextBox
-            // 
-            this.channelTextBox.Location = new System.Drawing.Point(272, 110);
-            this.channelTextBox.Name = "channelTextBox";
-            this.channelTextBox.Size = new System.Drawing.Size(100, 23);
-            this.channelTextBox.TabIndex = 8;
-            // 
-            // sampleRateLabel
-            // 
-            this.sampleRateLabel.AutoSize = true;
-            this.sampleRateLabel.Location = new System.Drawing.Point(8, 142);
-            this.sampleRateLabel.Name = "sampleRateLabel";
-            this.sampleRateLabel.Size = new System.Drawing.Size(72, 15);
-            this.sampleRateLabel.TabIndex = 9;
-            this.sampleRateLabel.Text = "Sample Rate";
-            // 
-            // sampleRateComboBox
-            // 
-            this.sampleRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sampleRateComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.sampleRateComboBox.FormattingEnabled = true;
-            this.sampleRateComboBox.Items.AddRange(new object[] {
-            "8 kHz",
-            "16 kHz",
-            "32 kHz",
-            "44.1 kHz",
-            "48 kHz",
-            "96 kHz",
-            "192 kHz"});
-            this.sampleRateComboBox.Location = new System.Drawing.Point(86, 139);
-            this.sampleRateComboBox.Name = "sampleRateComboBox";
-            this.sampleRateComboBox.Size = new System.Drawing.Size(100, 23);
-            this.sampleRateComboBox.TabIndex = 10;
             // 
             // AddStreamWindow
             // 
@@ -464,5 +486,7 @@
         private System.Windows.Forms.ComboBox sampleRateComboBox;
         private System.Windows.Forms.Label sampleRateLabel;
         private System.Windows.Forms.TextBox channelTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.Label passwordLabel;
     }
 }
