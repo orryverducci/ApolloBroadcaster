@@ -92,11 +92,6 @@ namespace ShockCast
             device = devices.GetDevice(ID);
             // Set wave in to WASAPI capture of the specified device
             waveIn = new WasapiCapture(device);
-            // Check the input does not have more than 2 channels, thowing an exception if it does
-            if (waveIn.WaveFormat.Channels > 2)
-            {
-                throw new ArgumentException("Inputs with more than 2 channels are not supported.");
-            }
             // Set the number of bytes used by each sample
             sampleByteSize = waveIn.WaveFormat.BitsPerSample / 8;
             // Add event handler to retrieve samples from the device
@@ -109,7 +104,14 @@ namespace ShockCast
             // Create sample provider
             sampleChannel.PreVolumeMeter += sampleProvider_StreamVolume;
             // Start recording
-            waveIn.StartRecording();
+            try
+            {
+                waveIn.StartRecording();
+            }
+            catch
+            {
+                throw new ArgumentException("This input device is not supported.");
+            }
         }
 
         /// <summary>
@@ -219,6 +221,12 @@ namespace ShockCast
             foreach (MMDevice endPoint in enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active))
             {
                 Device device = new Device(endPoint.FriendlyName, endPoint.ID);
+                devices.Add(device);
+            }
+            // Enumerate all the output loopback devices and add them to the list
+            foreach (MMDevice endPoint in enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active))
+            {
+                Device device = new Device("Loopback: " + endPoint.FriendlyName, endPoint.ID);
                 devices.Add(device);
             }
             // Return the list
