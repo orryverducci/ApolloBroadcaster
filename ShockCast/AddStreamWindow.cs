@@ -83,5 +83,25 @@ namespace ShockCast
             // Select initial value
             bitrateComboBox.SelectedIndex = 0;
         }
+
+        #region Key Entry Validation
+        private void portTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void channelTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
     }
 }

@@ -172,6 +172,7 @@
             this.channelTextBox.Name = "channelTextBox";
             this.channelTextBox.Size = new System.Drawing.Size(100, 23);
             this.channelTextBox.TabIndex = 8;
+            this.channelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.channelTextBox_KeyPress);
             // 
             // channelLabel
             // 
@@ -307,6 +308,7 @@
             this.portTextBox.Name = "portTextBox";
             this.portTextBox.Size = new System.Drawing.Size(95, 23);
             this.portTextBox.TabIndex = 8;
+            this.portTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.portTextBox_KeyPress);
             // 
             // portLabel
             // 
