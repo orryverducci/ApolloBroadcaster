@@ -220,13 +220,15 @@ namespace ShockCast
             // Enumerate all the plugged in input devices and add them to the list
             foreach (MMDevice endPoint in enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active))
             {
-                Device device = new Device(endPoint.FriendlyName, endPoint.ID);
+                IWaveIn captureDevice = new WasapiCapture(endPoint);
+                Device device = new Device(endPoint.FriendlyName, endPoint.ID, captureDevice.WaveFormat.SampleRate, captureDevice.WaveFormat.Channels);
                 devices.Add(device);
             }
             // Enumerate all the output loopback devices and add them to the list
             foreach (MMDevice endPoint in enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active))
             {
-                Device device = new Device("Loopback: " + endPoint.FriendlyName, endPoint.ID);
+                IWaveIn captureDevice = new WasapiCapture(endPoint);
+                Device device = new Device("Loopback: " + endPoint.FriendlyName, endPoint.ID, captureDevice.WaveFormat.SampleRate, captureDevice.WaveFormat.Channels);
                 devices.Add(device);
             }
             // Return the list

@@ -33,6 +33,10 @@
             this.deviceComboBox = new System.Windows.Forms.ComboBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.channelsLabel = new System.Windows.Forms.Label();
+            this.channelNumLabel = new System.Windows.Forms.Label();
+            this.sampleRateLabel = new System.Windows.Forms.Label();
+            this.sampleRateFreqLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // deviceLabel
@@ -58,14 +62,15 @@
             this.deviceComboBox.Name = "deviceComboBox";
             this.deviceComboBox.Size = new System.Drawing.Size(355, 23);
             this.deviceComboBox.TabIndex = 1;
+            this.deviceComboBox.SelectedIndexChanged += new System.EventHandler(this.deviceComboBox_SelectedIndexChanged);
             // 
             // okButton
             // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.CausesValidation = false;
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.okButton.Location = new System.Drawing.Point(216, 81);
+            this.okButton.Location = new System.Drawing.Point(216, 107);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 2;
@@ -74,16 +79,52 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.CausesValidation = false;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cancelButton.Location = new System.Drawing.Point(297, 81);
+            this.cancelButton.Location = new System.Drawing.Point(297, 107);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            // 
+            // channelsLabel
+            // 
+            this.channelsLabel.AutoSize = true;
+            this.channelsLabel.Location = new System.Drawing.Point(14, 81);
+            this.channelsLabel.Name = "channelsLabel";
+            this.channelsLabel.Size = new System.Drawing.Size(59, 15);
+            this.channelsLabel.TabIndex = 4;
+            this.channelsLabel.Text = "Channels:";
+            // 
+            // channelNumLabel
+            // 
+            this.channelNumLabel.AutoSize = true;
+            this.channelNumLabel.Location = new System.Drawing.Point(72, 81);
+            this.channelNumLabel.Name = "channelNumLabel";
+            this.channelNumLabel.Size = new System.Drawing.Size(13, 15);
+            this.channelNumLabel.TabIndex = 5;
+            this.channelNumLabel.Text = "1";
+            // 
+            // sampleRateLabel
+            // 
+            this.sampleRateLabel.AutoSize = true;
+            this.sampleRateLabel.Location = new System.Drawing.Point(200, 81);
+            this.sampleRateLabel.Name = "sampleRateLabel";
+            this.sampleRateLabel.Size = new System.Drawing.Size(75, 15);
+            this.sampleRateLabel.TabIndex = 6;
+            this.sampleRateLabel.Text = "Sample Rate:";
+            // 
+            // sampleRateFreqLabel
+            // 
+            this.sampleRateFreqLabel.AutoSize = true;
+            this.sampleRateFreqLabel.Location = new System.Drawing.Point(274, 81);
+            this.sampleRateFreqLabel.Name = "sampleRateFreqLabel";
+            this.sampleRateFreqLabel.Size = new System.Drawing.Size(51, 15);
+            this.sampleRateFreqLabel.TabIndex = 7;
+            this.sampleRateFreqLabel.Text = "44.1 kHz";
             // 
             // AddInputWindow
             // 
@@ -93,7 +134,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.cancelButton;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(384, 116);
+            this.ClientSize = new System.Drawing.Size(384, 142);
+            this.Controls.Add(this.sampleRateFreqLabel);
+            this.Controls.Add(this.sampleRateLabel);
+            this.Controls.Add(this.channelNumLabel);
+            this.Controls.Add(this.channelsLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.deviceComboBox);
@@ -120,5 +165,9 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ComboBox deviceComboBox;
+        private System.Windows.Forms.Label channelsLabel;
+        private System.Windows.Forms.Label channelNumLabel;
+        private System.Windows.Forms.Label sampleRateLabel;
+        private System.Windows.Forms.Label sampleRateFreqLabel;
     }
 }

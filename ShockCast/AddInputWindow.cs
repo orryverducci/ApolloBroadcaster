@@ -59,5 +59,18 @@ namespace ShockCast
                 Opacity = 100;
             }
         }
+
+        /// <summary>
+        /// Event handler to show device details on selection
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        private void deviceComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            channelNumLabel.Text = ((Device)(deviceComboBox.SelectedItem)).Channels.ToString();
+            float sampleRate = ((Device)(deviceComboBox.SelectedItem)).SampleRate;
+            sampleRate = sampleRate / 1000;
+            sampleRateFreqLabel.Text = sampleRate.ToString() + " kHz";
+        }
     }
 }
