@@ -29,8 +29,10 @@ namespace ShockCast
             // Load inputs
             inputComboBox.DataSource = inputs;
             inputComboBox.DisplayMember = "Name";
+            // Load codecs
+            codecComboBox.DataSource = Stream.Codecs;
+            codecComboBox.DisplayMember = "Name";
             // Set initial combo box values
-            codecComboBox.SelectedIndex = 0;
             typeComboBox.SelectedIndex = 0;
             // Determine if inputs have been added
             if (inputs.Count() == 0) // If no inputs are available
@@ -67,21 +69,16 @@ namespace ShockCast
 
         private void codecComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int[] bitrates = {};
-            // Remove all existing combo box items
-            bitrateComboBox.Items.Clear();
-            // Find bitrates supported by selected codec
-            if ((string)codecComboBox.SelectedItem == "MP3")
+            // Change bitrate combo box data source to selected codec
+            bitrateComboBox.DataSource = ((Codec)(codecComboBox.SelectedItem)).SupportedBitrates;
+            // Select recommended bitrate
+            for (int i = 0; i < bitrateComboBox.Items.Count; i++)
             {
-                bitrates = MP3.SupportedBitrates;
+                if (((int)(bitrateComboBox.Items[i])) == ((Codec)(codecComboBox.SelectedItem)).RecommendedBitrate)
+                {
+                    bitrateComboBox.SelectedIndex = i;
+                }
             }
-            // Add bitrates to combo box
-            foreach (int bitrate in bitrates)
-            {
-                bitrateComboBox.Items.Add(bitrate);
-            }
-            // Select initial value
-            bitrateComboBox.SelectedIndex = 0;
         }
 
         #region Key Entry Validation

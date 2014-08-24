@@ -70,12 +70,11 @@
       <DependentUpon>AddInputWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\BroadcastCore.cs" />
+    <Compile Include="Core\Codec.cs" />
     <Compile Include="UI\DBFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Core\Device.cs" />
-    <Compile Include="Core\IEncoder.cs" />
-    <Compile Include="Core\MP3.cs" />
     <Compile Include="UI\HeaderlessTabs.cs">
       <SubType>Component</SubType>
     </Compile>
