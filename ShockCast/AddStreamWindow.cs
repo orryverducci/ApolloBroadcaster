@@ -32,7 +32,9 @@ namespace ShockCast
             // Load codecs
             codecComboBox.DataSource = Stream.Codecs;
             codecComboBox.DisplayMember = "Name";
-            // Set initial combo box values
+            // Set initial values
+            channelTextBox.Text = "2";
+            sampleRateComboBox.SelectedIndex = 3;
             typeComboBox.SelectedIndex = 0;
             // Determine if inputs have been added
             if (inputs.Count() == 0) // If no inputs are available
