@@ -73,7 +73,7 @@
             this.okButton.Location = new System.Drawing.Point(216, 107);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 2;
+            this.okButton.TabIndex = 6;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
             // 
@@ -86,7 +86,7 @@
             this.cancelButton.Location = new System.Drawing.Point(297, 107);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 3;
+            this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -96,7 +96,7 @@
             this.channelsLabel.Location = new System.Drawing.Point(14, 81);
             this.channelsLabel.Name = "channelsLabel";
             this.channelsLabel.Size = new System.Drawing.Size(59, 15);
-            this.channelsLabel.TabIndex = 4;
+            this.channelsLabel.TabIndex = 2;
             this.channelsLabel.Text = "Channels:";
             // 
             // channelNumLabel
@@ -105,7 +105,7 @@
             this.channelNumLabel.Location = new System.Drawing.Point(72, 81);
             this.channelNumLabel.Name = "channelNumLabel";
             this.channelNumLabel.Size = new System.Drawing.Size(13, 15);
-            this.channelNumLabel.TabIndex = 5;
+            this.channelNumLabel.TabIndex = 3;
             this.channelNumLabel.Text = "1";
             // 
             // sampleRateLabel
@@ -114,7 +114,7 @@
             this.sampleRateLabel.Location = new System.Drawing.Point(200, 81);
             this.sampleRateLabel.Name = "sampleRateLabel";
             this.sampleRateLabel.Size = new System.Drawing.Size(75, 15);
-            this.sampleRateLabel.TabIndex = 6;
+            this.sampleRateLabel.TabIndex = 4;
             this.sampleRateLabel.Text = "Sample Rate:";
             // 
             // sampleRateFreqLabel
@@ -123,7 +123,7 @@
             this.sampleRateFreqLabel.Location = new System.Drawing.Point(274, 81);
             this.sampleRateFreqLabel.Name = "sampleRateFreqLabel";
             this.sampleRateFreqLabel.Size = new System.Drawing.Size(51, 15);
-            this.sampleRateFreqLabel.TabIndex = 7;
+            this.sampleRateFreqLabel.TabIndex = 5;
             this.sampleRateFreqLabel.Text = "44.1 kHz";
             // 
             // AddInputWindow
