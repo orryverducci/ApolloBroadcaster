@@ -32,10 +32,12 @@ namespace ShockCast
             // Load codecs
             codecComboBox.DataSource = Stream.Codecs;
             codecComboBox.DisplayMember = "Name";
+            // Load server types
+            typeComboBox.DataSource = Stream.ServerTypes;
+            typeComboBox.DisplayMember = "Name";
             // Set initial values
             channelTextBox.Text = "2";
             sampleRateComboBox.SelectedIndex = 3;
-            typeComboBox.SelectedIndex = 0;
             // Determine if inputs have been added
             if (inputs.Count() == 0) // If no inputs are available
             {
@@ -69,6 +71,7 @@ namespace ShockCast
         }
         #endregion
 
+        #region Combo Box Selections
         private void codecComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Change bitrate combo box data source to selected codec
@@ -82,6 +85,15 @@ namespace ShockCast
                 }
             }
         }
+
+        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Change port number to the server default
+            portTextBox.Text = ((ServerType)(typeComboBox.SelectedItem)).DefaultPort.ToString();
+            // Enable or disable mount input depending on if server uses mounts
+            mountTextBox.Enabled = ((ServerType)(typeComboBox.SelectedItem)).UsesMounts;
+        }
+        #endregion
 
         #region Key Entry Validation
         private void portTextBox_KeyPress(object sender, KeyPressEventArgs e)

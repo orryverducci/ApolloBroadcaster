@@ -8,22 +8,23 @@ namespace ShockCast
 {
     class Stream
     {
-        #region Enumerations
-        public enum SERVERTYPE
-        {
-            SHOUTCAST,
-            ICECAST
-        }
-        #endregion
-
         #region Static Properties
         private static List<Codec> codecs = new List<Codec>();
+        private static List<ServerType> serverTypes = new List<ServerType>();
 
         public static List<Codec> Codecs
         {
             get
             {
                 return codecs;
+            }
+        }
+
+        public static List<ServerType> ServerTypes
+        {
+            get
+            {
+                return serverTypes;
             }
         }
         #endregion
@@ -38,9 +39,9 @@ namespace ShockCast
         /// </summary>
         public int Bitrate { get; set; }
         /// <summary>
-        /// The type of server to be streamed to
+        /// The server to be streamed to
         /// </summary>
-        public SERVERTYPE ServerType { get; set; }
+        public string Server { get; set; }
         /// <summary>
         /// The URL of the server to stream to
         /// </summary>
@@ -61,6 +62,9 @@ namespace ShockCast
             // Add MP3 codec to list of codecs
             Codec mp3 = new Codec("MP3", 128, new int[] { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 });
             codecs.Add(mp3);
+            // Add IceCast to the list of server types
+            ServerType iceCast = new ServerType("IceCast", 8000, true);
+            serverTypes.Add(iceCast);
         }
         #endregion
     }

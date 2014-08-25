@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStreamWindow));
             this.tabPanel = new System.Windows.Forms.Panel();
-            this.serverButton = new ShockCast.UI.MenuButton();
-            this.audioButton = new ShockCast.UI.MenuButton();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.tabControl = new ShockCast.UI.HeaderlessTabs();
             this.audioPage = new System.Windows.Forms.TabPage();
+            this.khzLabel = new System.Windows.Forms.Label();
+            this.kbpsLabel = new System.Windows.Forms.Label();
             this.sampleRateComboBox = new System.Windows.Forms.ComboBox();
             this.sampleRateLabel = new System.Windows.Forms.Label();
             this.channelTextBox = new System.Windows.Forms.TextBox();
@@ -59,8 +59,8 @@
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.typeLabel = new System.Windows.Forms.Label();
             this.serverLabel = new System.Windows.Forms.Label();
-            this.kbpsLabel = new System.Windows.Forms.Label();
-            this.khzLabel = new System.Windows.Forms.Label();
+            this.serverButton = new ShockCast.UI.MenuButton();
+            this.audioButton = new ShockCast.UI.MenuButton();
             this.tabPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.audioPage.SuspendLayout();
@@ -79,40 +79,6 @@
             this.tabPanel.Name = "tabPanel";
             this.tabPanel.Size = new System.Drawing.Size(200, 261);
             this.tabPanel.TabIndex = 0;
-            // 
-            // serverButton
-            // 
-            this.serverButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.serverButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.serverButton.BackColor = System.Drawing.Color.Transparent;
-            this.serverButton.CausesValidation = false;
-            this.serverButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.serverButton.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverButton.Location = new System.Drawing.Point(0, 32);
-            this.serverButton.Name = "serverButton";
-            this.serverButton.Size = new System.Drawing.Size(200, 32);
-            this.serverButton.TabIndex = 1;
-            this.serverButton.Text = "&Server Settings";
-            this.serverButton.UseVisualStyleBackColor = true;
-            this.serverButton.CheckedChanged += new System.EventHandler(this.serverButton_CheckedChanged);
-            // 
-            // audioButton
-            // 
-            this.audioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.audioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.audioButton.BackColor = System.Drawing.Color.Transparent;
-            this.audioButton.CausesValidation = false;
-            this.audioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.audioButton.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.audioButton.Location = new System.Drawing.Point(0, 0);
-            this.audioButton.Name = "audioButton";
-            this.audioButton.Size = new System.Drawing.Size(200, 32);
-            this.audioButton.TabIndex = 0;
-            this.audioButton.Text = "&Audio Settings";
-            this.audioButton.UseVisualStyleBackColor = false;
-            this.audioButton.CheckedChanged += new System.EventHandler(this.audioButton_CheckedChanged);
             // 
             // okButton
             // 
@@ -176,6 +142,24 @@
             this.audioPage.Size = new System.Drawing.Size(384, 220);
             this.audioPage.TabIndex = 0;
             this.audioPage.Text = "Audio Settings";
+            // 
+            // khzLabel
+            // 
+            this.khzLabel.AutoSize = true;
+            this.khzLabel.Location = new System.Drawing.Point(158, 142);
+            this.khzLabel.Name = "khzLabel";
+            this.khzLabel.Size = new System.Drawing.Size(27, 15);
+            this.khzLabel.TabIndex = 12;
+            this.khzLabel.Text = "kHz";
+            // 
+            // kbpsLabel
+            // 
+            this.kbpsLabel.AutoSize = true;
+            this.kbpsLabel.Location = new System.Drawing.Point(158, 113);
+            this.kbpsLabel.Name = "kbpsLabel";
+            this.kbpsLabel.Size = new System.Drawing.Size(32, 15);
+            this.kbpsLabel.TabIndex = 7;
+            this.kbpsLabel.Text = "kbps";
             // 
             // sampleRateComboBox
             // 
@@ -399,12 +383,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.typeComboBox.Items.AddRange(new object[] {
-            "Icecast"});
             this.typeComboBox.Location = new System.Drawing.Point(86, 52);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(286, 23);
             this.typeComboBox.TabIndex = 2;
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
             // typeLabel
             // 
@@ -427,23 +410,39 @@
             this.serverLabel.TabIndex = 0;
             this.serverLabel.Text = "Server settings";
             // 
-            // kbpsLabel
+            // serverButton
             // 
-            this.kbpsLabel.AutoSize = true;
-            this.kbpsLabel.Location = new System.Drawing.Point(158, 113);
-            this.kbpsLabel.Name = "kbpsLabel";
-            this.kbpsLabel.Size = new System.Drawing.Size(32, 15);
-            this.kbpsLabel.TabIndex = 7;
-            this.kbpsLabel.Text = "kbps";
+            this.serverButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.serverButton.BackColor = System.Drawing.Color.Transparent;
+            this.serverButton.CausesValidation = false;
+            this.serverButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.serverButton.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverButton.Location = new System.Drawing.Point(0, 32);
+            this.serverButton.Name = "serverButton";
+            this.serverButton.Size = new System.Drawing.Size(200, 32);
+            this.serverButton.TabIndex = 1;
+            this.serverButton.Text = "&Server Settings";
+            this.serverButton.UseVisualStyleBackColor = true;
+            this.serverButton.CheckedChanged += new System.EventHandler(this.serverButton_CheckedChanged);
             // 
-            // khzLabel
+            // audioButton
             // 
-            this.khzLabel.AutoSize = true;
-            this.khzLabel.Location = new System.Drawing.Point(158, 142);
-            this.khzLabel.Name = "khzLabel";
-            this.khzLabel.Size = new System.Drawing.Size(27, 15);
-            this.khzLabel.TabIndex = 12;
-            this.khzLabel.Text = "kHz";
+            this.audioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.audioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.audioButton.BackColor = System.Drawing.Color.Transparent;
+            this.audioButton.CausesValidation = false;
+            this.audioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.audioButton.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.audioButton.Location = new System.Drawing.Point(0, 0);
+            this.audioButton.Name = "audioButton";
+            this.audioButton.Size = new System.Drawing.Size(200, 32);
+            this.audioButton.TabIndex = 0;
+            this.audioButton.Text = "&Audio Settings";
+            this.audioButton.UseVisualStyleBackColor = false;
+            this.audioButton.CheckedChanged += new System.EventHandler(this.audioButton_CheckedChanged);
             // 
             // AddStreamWindow
             // 
