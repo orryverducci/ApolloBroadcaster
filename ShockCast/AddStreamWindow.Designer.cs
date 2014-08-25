@@ -59,6 +59,8 @@
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.typeLabel = new System.Windows.Forms.Label();
             this.serverLabel = new System.Windows.Forms.Label();
+            this.kbpsLabel = new System.Windows.Forms.Label();
+            this.khzLabel = new System.Windows.Forms.Label();
             this.tabPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.audioPage.SuspendLayout();
@@ -155,6 +157,8 @@
             // 
             this.audioPage.BackColor = System.Drawing.Color.White;
             this.audioPage.CausesValidation = false;
+            this.audioPage.Controls.Add(this.khzLabel);
+            this.audioPage.Controls.Add(this.kbpsLabel);
             this.audioPage.Controls.Add(this.sampleRateComboBox);
             this.audioPage.Controls.Add(this.sampleRateLabel);
             this.audioPage.Controls.Add(this.channelTextBox);
@@ -179,17 +183,17 @@
             this.sampleRateComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.sampleRateComboBox.FormattingEnabled = true;
             this.sampleRateComboBox.Items.AddRange(new object[] {
-            "8 kHz",
-            "16 kHz",
-            "32 kHz",
-            "44.1 kHz",
-            "48 kHz",
-            "96 kHz",
-            "192 kHz"});
+            "8",
+            "16",
+            "32",
+            "44.1",
+            "48",
+            "96",
+            "192"});
             this.sampleRateComboBox.Location = new System.Drawing.Point(86, 139);
             this.sampleRateComboBox.Name = "sampleRateComboBox";
-            this.sampleRateComboBox.Size = new System.Drawing.Size(100, 23);
-            this.sampleRateComboBox.TabIndex = 10;
+            this.sampleRateComboBox.Size = new System.Drawing.Size(66, 23);
+            this.sampleRateComboBox.TabIndex = 11;
             // 
             // sampleRateLabel
             // 
@@ -197,7 +201,7 @@
             this.sampleRateLabel.Location = new System.Drawing.Point(8, 142);
             this.sampleRateLabel.Name = "sampleRateLabel";
             this.sampleRateLabel.Size = new System.Drawing.Size(72, 15);
-            this.sampleRateLabel.TabIndex = 9;
+            this.sampleRateLabel.TabIndex = 10;
             this.sampleRateLabel.Text = "Sample Rate";
             // 
             // channelTextBox
@@ -205,7 +209,7 @@
             this.channelTextBox.Location = new System.Drawing.Point(272, 110);
             this.channelTextBox.Name = "channelTextBox";
             this.channelTextBox.Size = new System.Drawing.Size(100, 23);
-            this.channelTextBox.TabIndex = 8;
+            this.channelTextBox.TabIndex = 9;
             this.channelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.channelTextBox_KeyPress);
             // 
             // channelLabel
@@ -214,7 +218,7 @@
             this.channelLabel.Location = new System.Drawing.Point(210, 113);
             this.channelLabel.Name = "channelLabel";
             this.channelLabel.Size = new System.Drawing.Size(56, 15);
-            this.channelLabel.TabIndex = 7;
+            this.channelLabel.TabIndex = 8;
             this.channelLabel.Text = "Channels";
             // 
             // bitrateComboBox
@@ -227,7 +231,7 @@
             this.bitrateComboBox.FormattingEnabled = true;
             this.bitrateComboBox.Location = new System.Drawing.Point(86, 110);
             this.bitrateComboBox.Name = "bitrateComboBox";
-            this.bitrateComboBox.Size = new System.Drawing.Size(100, 23);
+            this.bitrateComboBox.Size = new System.Drawing.Size(66, 23);
             this.bitrateComboBox.TabIndex = 6;
             // 
             // bitrateLabel
@@ -423,6 +427,24 @@
             this.serverLabel.TabIndex = 0;
             this.serverLabel.Text = "Server settings";
             // 
+            // kbpsLabel
+            // 
+            this.kbpsLabel.AutoSize = true;
+            this.kbpsLabel.Location = new System.Drawing.Point(158, 113);
+            this.kbpsLabel.Name = "kbpsLabel";
+            this.kbpsLabel.Size = new System.Drawing.Size(32, 15);
+            this.kbpsLabel.TabIndex = 7;
+            this.kbpsLabel.Text = "kbps";
+            // 
+            // khzLabel
+            // 
+            this.khzLabel.AutoSize = true;
+            this.khzLabel.Location = new System.Drawing.Point(158, 142);
+            this.khzLabel.Name = "khzLabel";
+            this.khzLabel.Size = new System.Drawing.Size(27, 15);
+            this.khzLabel.TabIndex = 12;
+            this.khzLabel.Text = "kHz";
+            // 
             // AddStreamWindow
             // 
             this.AcceptButton = this.okButton;
@@ -488,5 +510,7 @@
         private System.Windows.Forms.TextBox channelTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label khzLabel;
+        private System.Windows.Forms.Label kbpsLabel;
     }
 }
