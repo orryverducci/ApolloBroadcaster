@@ -51,6 +51,36 @@ namespace ShockCast
             }
         }
 
+        /// <summary>
+        /// Carry out form validation on closing
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event arguments</param>
+        private void AddStreamWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult == DialogResult.OK)
+            {
+                // Show error on invalid value in channels text box
+                if (channelTextBox.Text == String.Empty)
+                {
+                    MessageBox.Show("Please enter a valid number of channels.", "Unable to Add Stream", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+                // Show error on invalid value in URL text box
+                else if (urlTextBox.Text == String.Empty)
+                {
+                    MessageBox.Show("Please enter a URL for the server.", "Unable to Add Stream", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+                // Show error when mount not entered if required by server
+                else if (((ServerType)(typeComboBox.SelectedItem)).UsesMounts && mountTextBox.Text == String.Empty)
+                {
+                    MessageBox.Show("Please enter a mount point for the server.", "Unable to Add Stream", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+            }
+        }
+
         #region Tabs
         private void audioButton_CheckedChanged(object sender, EventArgs e)
         {
