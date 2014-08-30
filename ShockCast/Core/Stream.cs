@@ -175,7 +175,8 @@ namespace ShockCast
         /// <param name="streamURL">The server URL</param>
         /// <param name="streamMount">The server mount point, if required</param>
         /// <param name="streamPort">The server port. Set to 0 to use the default port</param>
-        public Stream(string streamCodec, int streamBitrate, int streamChannels, int streamSampleRate, string streamServer, string streamURL, string streamMount, int streamPort)
+        /// <param name="streamPassword">The password for the server, if required</param>
+        public Stream(string streamCodec, int streamBitrate, int streamChannels, int streamSampleRate, string streamServer, string streamURL, string streamMount, int streamPort, string streamPassword)
         {
             codecType = streamCodec;
             bitrate = streamBitrate;
@@ -185,6 +186,7 @@ namespace ShockCast
             serverURL = streamURL;
             mount = streamMount;
             serverPort = streamPort;
+            password = streamPassword;
             currentState = States.DISCONNECTED;
         }
         #endregion
