@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShockCast
 {
-    class ServerType
+    public class ServerType
     {
         /// <summary>
         /// Server type name

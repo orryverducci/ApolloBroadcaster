@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShockCast
 {
-    class Codec
+    public class Codec
     {
         /// <summary>
         /// Codec Name
