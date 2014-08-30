@@ -14,6 +14,11 @@ namespace ShockCast
         private string name;
 
         /// <summary>
+        /// Server protocol
+        /// </summary>
+        private string protocol;
+
+        /// <summary>
         /// Server default port
         /// </summary>
         private int defaultPort;
@@ -31,6 +36,17 @@ namespace ShockCast
             get
             {
                 return name;
+            }
+        }
+
+        /// <summary>
+        /// Server protocol
+        /// </summary>
+        public string Protocol
+        {
+            get
+            {
+                return protocol;
             }
         }
 
@@ -60,11 +76,13 @@ namespace ShockCast
         /// Server type information
         /// </summary>
         /// <param name="serverTypeName">The name of the server type</param>
+        /// <param name="serverProtocol">The protocol used by the server</param>
         /// <param name="serverDefaultPort">The default port for the server</param>
         /// <param name="serverUsesMounts">Boolean representing if the server uses mount points</param>
-        public ServerType(string serverTypeName, int serverDefaultPort, bool serverUsesMounts)
+        public ServerType(string serverTypeName, string serverProtocol, int serverDefaultPort, bool serverUsesMounts)
         {
             name = serverTypeName;
+            protocol = serverProtocol;
             defaultPort = serverDefaultPort;
             usesMounts = serverUsesMounts;
         }
