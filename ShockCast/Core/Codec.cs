@@ -14,6 +14,11 @@ namespace ShockCast
         private string name;
 
         /// <summary>
+        /// Codec encoder name
+        /// </summary>
+        private string encoder;
+
+        /// <summary>
         /// Recommended bitrate
         /// </summary>
         private int recommendedBitrate;
@@ -31,6 +36,17 @@ namespace ShockCast
             get
             {
                 return name;
+            }
+        }
+
+        /// <summary>
+        /// Codec encoder name
+        /// </summary>
+        public string Encoder
+        {
+            get
+            {
+                return encoder;
             }
         }
 
@@ -60,11 +76,13 @@ namespace ShockCast
         /// Codec information
         /// </summary>
         /// <param name="codecName">The name of the codec</param>
+        /// <param name="codecEncoder">The name of the encoder</param>
         /// <param name="codecRecommendedBitrate">The bitrate recommended for the codec</param>
         /// <param name="codecSupportedBitrates">An array of bitrates supported by the codec</param>
-        public Codec(string codecName, int codecRecommendedBitrate, int[] codecSupportedBitrates)
+        public Codec(string codecName, string codecEncoder, int codecRecommendedBitrate, int[] codecSupportedBitrates)
         {
             name = codecName;
+            encoder = codecEncoder;
             recommendedBitrate = codecRecommendedBitrate;
             supportedBitrates = codecSupportedBitrates;
         }

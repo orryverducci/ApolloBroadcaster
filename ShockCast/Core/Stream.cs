@@ -157,7 +157,7 @@ namespace ShockCast
         static Stream()
         {
             // Add MP3 codec to list of codecs
-            Codec mp3 = new Codec("MP3", 128, new int[] { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 });
+            Codec mp3 = new Codec("MP3", "libmp3lame", 128, new int[] { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 });
             codecs.Add(mp3);
             // Add IceCast to the list of server types
             ServerType iceCast = new ServerType("IceCast", 8000, true);
