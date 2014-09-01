@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShockCast
 {
-    class Stream
+    public class Stream
     {
         #region Enumerations
         /// <summary>

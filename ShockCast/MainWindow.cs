@@ -137,7 +137,7 @@ namespace ShockCast
             // Show dialog, and add input if the OK button is clicked
             if (streamWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                broadcastCore.AddStream(streamWindow.Device, streamWindow.CodecType, streamWindow.Bitrate, streamWindow.Channels, streamWindow.SampleRate, streamWindow.Server, streamWindow.StreamURL, streamWindow.Mount, streamWindow.Port, streamWindow.Password);
             }
         }
 

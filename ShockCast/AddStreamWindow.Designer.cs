@@ -497,13 +497,6 @@
         private System.Windows.Forms.Label urlLabel;
         private System.Windows.Forms.Label portLabel;
         private System.Windows.Forms.Label mountLabel;
-        public System.Windows.Forms.ComboBox inputComboBox;
-        public System.Windows.Forms.ComboBox codecComboBox;
-        public System.Windows.Forms.ComboBox bitrateComboBox;
-        public System.Windows.Forms.ComboBox typeComboBox;
-        public System.Windows.Forms.TextBox urlTextBox;
-        public System.Windows.Forms.TextBox portTextBox;
-        public System.Windows.Forms.TextBox mountTextBox;
         private System.Windows.Forms.Label channelLabel;
         private System.Windows.Forms.ComboBox sampleRateComboBox;
         private System.Windows.Forms.Label sampleRateLabel;
@@ -512,5 +505,12 @@
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Label khzLabel;
         private System.Windows.Forms.Label kbpsLabel;
+        private System.Windows.Forms.ComboBox inputComboBox;
+        private System.Windows.Forms.ComboBox codecComboBox;
+        private System.Windows.Forms.ComboBox bitrateComboBox;
+        private System.Windows.Forms.ComboBox typeComboBox;
+        private System.Windows.Forms.TextBox urlTextBox;
+        private System.Windows.Forms.TextBox portTextBox;
+        private System.Windows.Forms.TextBox mountTextBox;
     }
 }

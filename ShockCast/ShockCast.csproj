@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Core\BroadcastCore.cs" />
     <Compile Include="Core\Codec.cs" />
+    <Compile Include="Core\InputStream.cs" />
     <Compile Include="Core\ServerType.cs" />
     <Compile Include="UI\DBFlowLayoutPanel.cs">
       <SubType>Component</SubType>
