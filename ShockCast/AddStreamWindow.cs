@@ -83,10 +83,16 @@ namespace ShockCast
         {
             get
             {
-                // Convert from string to URI class
-                Uri streamURI = new Uri("urlTextBox.Text");
-                // Return reconstructed URL without port or protocol
-                return streamURI.Host + streamURI.PathAndQuery;
+                // Return string without protocol, if entered
+                int protocolIndex = urlTextBox.Text.IndexOf("://");
+                if (protocolIndex > -1)
+                {
+                    return urlTextBox.Text.Substring(protocolIndex + 3);
+                }
+                else
+                {
+                    return urlTextBox.Text;
+                }
             }
         }
         /// <summary>
