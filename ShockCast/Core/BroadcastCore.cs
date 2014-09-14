@@ -103,16 +103,44 @@ namespace ShockCast
         /// <summary>
         /// List of the current streams
         /// </summary>
-        private List<Stream> streams = new List<Stream>();
+        private List<InputStream> streams = new List<InputStream>();
 
         /// <summary>
         /// List of the current streams
         /// </summary>
-        public List<Stream> Streams
+        public List<InputStream> Streams
         {
             get
             {
                 return streams;
+            }
+        }
+
+        /// <summary>
+        /// Add a stream
+        /// </summary>
+        /// <param name="inputID">ID of the input device</param>
+        /// <param name="codec">Codec of the stream to be added</param>
+        /// <param name="bitrate">Bitrate of the stream to be added</param>
+        /// <param name="channels">Audio channels of the stream to be added</param>
+        /// <param name="sampleRate">Audio sample rate of the stream to be added</param>
+        /// <param name="server">Server type of the stream to be added</param>
+        /// <param name="serverURL">URL of the stream to be added</param>
+        /// <param name="mount">Mount of hte stream to be added</param>
+        /// <param name="port">Port of the stream to be added</param>
+        /// <param name="password">Password for the server of the stream to be added</param>
+        public void AddStream(string inputID, string codec, int bitrate, int channels, int sampleRate, string server, string serverURL, string mount, int port, string password)
+        {
+            // Create stream
+            Stream stream = new Stream(codec, bitrate, channels, sampleRate, server, serverURL, mount, port, password);
+            // Create input and stream link
+            InputStream inputStream = new InputStream(inputID, stream);
+            // Add stream to current streams
+            streams.Add(inputStream);
+            // Fire streams changed event
+            if (StreamsChanged != null)
+            {
+                StreamsChanged(this, new EventArgs());
             }
         }
         #endregion

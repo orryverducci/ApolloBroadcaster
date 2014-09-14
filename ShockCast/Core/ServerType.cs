@@ -29,6 +29,11 @@ namespace ShockCast
         private bool usesMounts;
 
         /// <summary>
+        /// Represents if the server requires a password
+        /// </summary>
+        private bool requiresPassword;
+
+        /// <summary>
         /// Server type name
         /// </summary>
         public string Name
@@ -73,18 +78,31 @@ namespace ShockCast
         }
 
         /// <summary>
+        /// Represents if the server requires a password
+        /// </summary>
+        public bool RequiresPassword
+        {
+            get
+            {
+                return requiresPassword;
+            }
+        }
+
+        /// <summary>
         /// Server type information
         /// </summary>
         /// <param name="serverTypeName">The name of the server type</param>
         /// <param name="serverProtocol">The protocol used by the server</param>
         /// <param name="serverDefaultPort">The default port for the server</param>
         /// <param name="serverUsesMounts">Boolean representing if the server uses mount points</param>
-        public ServerType(string serverTypeName, string serverProtocol, int serverDefaultPort, bool serverUsesMounts)
+        /// <param name="serverRequiresPassword">Boolean representing if the server requires a password</param>
+        public ServerType(string serverTypeName, string serverProtocol, int serverDefaultPort, bool serverUsesMounts, bool serverRequiresPassword)
         {
             name = serverTypeName;
             protocol = serverProtocol;
             defaultPort = serverDefaultPort;
             usesMounts = serverUsesMounts;
+            requiresPassword = serverRequiresPassword;
         }
     }
 }

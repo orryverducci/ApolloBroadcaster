@@ -15,6 +15,131 @@ namespace ShockCast
     {
         private List<Input> inputs;
 
+        #region Options Properties
+        public string Device
+        {
+            get
+            {
+                return ((Input)inputComboBox.SelectedItem).ID;
+            }
+        }
+
+        /// <summary>
+        /// The audio codec of the stream
+        /// </summary>
+        public string CodecType
+        {
+            get
+            {
+                return ((Codec)codecComboBox.SelectedItem).Encoder;
+            }
+        }
+        /// <summary>
+        /// The bitrate of the stream
+        /// </summary>
+        public int Bitrate
+        {
+            get
+            {
+                return (int)bitrateComboBox.SelectedItem;
+            }
+        }
+        /// <summary>
+        /// The number of audio channels of the stream
+        /// </summary>
+        public int Channels
+        {
+            get
+            {
+                return int.Parse(channelTextBox.Text);
+            }
+        }
+        /// <summary>
+        /// The number of audio channels of the stream
+        /// </summary>
+        public int SampleRate
+        {
+            get
+            {
+                float sampleRate = float.Parse((string)sampleRateComboBox.SelectedItem);
+                sampleRate = sampleRate * 1000;
+                return (int)sampleRate;
+            }
+        }
+        /// <summary>
+        /// The server being streamed to
+        /// </summary>
+        public string Server
+        {
+            get
+            {
+                return ((ServerType)typeComboBox.SelectedItem).Protocol;
+            }
+        }
+        /// <summary>
+        /// The URL of the stream
+        /// </summary>
+        public string StreamURL
+        {
+            get
+            {
+                return urlTextBox.Text;
+            }
+        }
+        /// <summary>
+        /// The mount of the stream
+        /// </summary>
+        public string Mount
+        {
+            get
+            {
+                if (((ServerType)typeComboBox.SelectedItem).UsesMounts)
+                {
+                    return mountTextBox.Text;
+                }
+                else
+                {
+                    return String.Empty;
+                }
+            }
+        }
+        /// <summary>
+        /// The server port of the stream
+        /// </summary>
+        public int Port
+        {
+            get
+            {
+                int port = int.Parse(portTextBox.Text);
+                if (port != ((ServerType)typeComboBox.SelectedItem).DefaultPort)
+                {
+                    return port;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+        /// <summary>
+        /// The server password of the stream
+        /// </summary>
+        public string Password
+        {
+            get
+            {
+                if (((ServerType)typeComboBox.SelectedItem).RequiresPassword)
+                {
+                    return passwordTextBox.Text;
+                }
+                else
+                {
+                    return String.Empty;
+                }
+            }
+        }
+        #endregion
+
         public AddStreamWindow(List<Input> currentInputs)
         {
             inputs = currentInputs;
@@ -122,6 +247,8 @@ namespace ShockCast
             portTextBox.Text = ((ServerType)(typeComboBox.SelectedItem)).DefaultPort.ToString();
             // Enable or disable mount input depending on if server uses mounts
             mountTextBox.Enabled = ((ServerType)(typeComboBox.SelectedItem)).UsesMounts;
+            // Enable or disable password input depending on if server requres one
+            passwordTextBox.Enabled = ((ServerType)(typeComboBox.SelectedItem)).RequiresPassword;
         }
         #endregion
 
