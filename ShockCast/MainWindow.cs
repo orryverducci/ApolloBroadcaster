@@ -148,7 +148,7 @@ namespace ShockCast
         /// <param name="e">Event arguments</param>
         private void removeButton_Click(object sender, EventArgs e)
         {
-            broadcastCore.RemoveInput(selectedControl.Input);
+            broadcastCore.RemoveInput(((InputHeader)(selectedControl)).Input);
         }
         #endregion
 
@@ -177,6 +177,20 @@ namespace ShockCast
                 header.Click += header_Click;
                 // Add to flow layout
                 flowLayoutPanel.Controls.Add(header);
+                // Add streams
+                foreach (InputStream stream in broadcastCore.Streams)
+                {
+                    if (stream.InputID == input.ID)
+                    {
+                        // Create stream list item
+                        StreamListItem item = new StreamListItem();
+                        // Set stream list item UI size and position parameters
+                        item.Width = flowLayoutPanel.Width;
+                        item.Margin = new System.Windows.Forms.Padding(0);
+                        // Add to flow layout
+                        flowLayoutPanel.Controls.Add(item);
+                    }
+                }
             }
         }
 

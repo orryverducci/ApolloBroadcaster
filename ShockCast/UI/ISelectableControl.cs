@@ -9,6 +9,5 @@ namespace ShockCast.UI
     interface ISelectableControl
     {
         bool Selected { get; set; }
-        Input Input { get; }
     }
 }
