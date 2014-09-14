@@ -95,7 +95,8 @@ namespace ShockCast
             {
                 if (((ServerType)typeComboBox.SelectedItem).UsesMounts)
                 {
-                    return mountTextBox.Text;
+
+                    return mountTextBox.Text.StartsWith("/") ? mountTextBox.Text.Substring(1) : mountTextBox.Text;
                 }
                 else
                 {
