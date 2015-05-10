@@ -107,6 +107,12 @@
     <Compile Include="UI\MenuButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\StreamListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\StreamListItem.Designer.cs">
+      <DependentUpon>StreamListItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\VolumeMeter.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="AddStreamWindow.resx">
       <DependentUpon>AddStreamWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StreamListItem.resx">
+      <DependentUpon>StreamListItem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

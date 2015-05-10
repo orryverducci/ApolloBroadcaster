@@ -174,7 +174,7 @@ namespace ShockCast
                 header.Width = flowLayoutPanel.Width;
                 header.Margin = new System.Windows.Forms.Padding(0);
                 // Set click event handler
-                header.Click += header_Click;
+                header.Click += listItem_Click;
                 // Add to flow layout
                 flowLayoutPanel.Controls.Add(header);
                 // Add streams
@@ -187,6 +187,8 @@ namespace ShockCast
                         // Set stream list item UI size and position parameters
                         item.Width = flowLayoutPanel.Width;
                         item.Margin = new System.Windows.Forms.Padding(0);
+                        // Set click event handler
+                        item.Click += listItem_Click;
                         // Add to flow layout
                         flowLayoutPanel.Controls.Add(item);
                     }
@@ -199,7 +201,7 @@ namespace ShockCast
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event arguments</param>
-        void header_Click(object sender, EventArgs e)
+        void listItem_Click(object sender, EventArgs e)
         {
             // Mark previous selected control as not selected
             if (selectedControl != null)
